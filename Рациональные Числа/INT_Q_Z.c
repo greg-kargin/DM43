@@ -6,8 +6,5 @@
  
 int INT_Q_Z(struct RATIONAL a)
 {
-  if (a.denominator.number == NULL)
-    return 1;
-  else
-    return 0;
+	return a.denominator.number ? 0 : 1;
 }
