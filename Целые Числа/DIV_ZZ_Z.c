@@ -1,27 +1,31 @@
 /*DIV_ZZ_Z
-Описание:
-	Функция возвращает частное от деления большего целого числа на меньшее или равное натуральное с остатком(делитель отличен от нуля)
-Подключаемые модули:
+РћРїРёСЃР°РЅРёРµ:
+	Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚РЅРѕРµ РѕС‚ РґРµР»РµРЅРёСЏ Р±РѕР»СЊС€РµРіРѕ С†РµР»РѕРіРѕ С‡РёСЃР»Р° РЅР° РјРµРЅСЊС€РµРµ РёР»Рё СЂР°РІРЅРѕРµ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРµ СЃ РѕСЃС‚Р°С‚РєРѕРј(РґРµР»РёС‚РµР»СЊ РѕС‚Р»РёС‡РµРЅ РѕС‚ РЅСѓР»СЏ)
+РџРѕРґРєР»СЋС‡Р°РµРјС‹Рµ РјРѕРґСѓР»Рё:
 	DIV_NN_N
-Описание переменных:
-	num - Первое число
-	den - Второе число
-	buff - Вспомогательная переменная
-	result - Результат деления
+РћРїРёСЃР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С…:
+	num - РџРµСЂРІРѕРµ С‡РёСЃР»Рѕ
+	den - Р’С‚РѕСЂРѕРµ С‡РёСЃР»Рѕ
+	buff - Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ
+	result - Р РµР·СѓР»СЊС‚Р°С‚ РґРµР»РµРЅРёСЏ
 
-Голубев Гордей
-Хабаров Артем
+Р“РѕР»СѓР±РµРІ Р“РѕСЂРґРµР№
+РҐР°Р±Р°СЂРѕРІ РђСЂС‚РµРј
 4306
 */
-INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den)
-	{
-		INTEGER result;
-		NATURAL buff; 
-		buff.index=num.index;
-		buff.number=num.number;
-		buff=DIV_NN_N(buff,den);
-		result.index=buff.index;
-		result.number=buff.number;
-		result.sign=num.sign;
-		return result;
-	}
+struct INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den)
+{
+	struct INTEGER result;
+	struct NATURAL buff;
+  int i;
+
+	buff.index = num.natural_part.index;
+  for (i = 0; i < buff.index; ++i)
+    buff.number[i] = num.natural_part.number[i];
+	buff = DIV_NN_N(buff, den);
+	result.natural_part.index = buff.index;
+  for (i = 0; i < buff.index; ++i)
+    result.natural_part.number[i] = buff.number[i];
+	result.sign = num.sign;
+	return result;
+}
