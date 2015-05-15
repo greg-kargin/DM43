@@ -17,9 +17,9 @@ SUB_Z_Z
 4306
 */
 
-INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b)
+struct INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b)
 {
-  INTEGER result, c, d;
+  struct INTEGER result, c, d;
   c=DIV_ZZ_Z(a, b);
   d=TRANS_N_Z(b);
   c=MULL_ZZ_Z(c, d);
