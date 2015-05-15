@@ -15,17 +15,11 @@ b - вторая дробь
 Сыромятников Михаил
 группа 4306
 */
-RATIONAL DIV_QQ_Q (RATIONAL a, RATIONAL b)
-  {
-  	RATIONAL c;
-  	c.numerator = MUL_ZZ_Z(a.numerator, b.denominator);
-  	c.denominator = MUL_ZZ_Z(a.denominator, b.numerator);
-  	if(a.sign == 1 && b.sign == 1)
-  	  c.sign = 0;
-  	else
-  	  if(a.sign == 1 || b.sign == 1)
-  	    c.sign = 1;
-  	  else
-  	    c.sign = 0;
-  	return c;
-  }
+struct RATIONAL DIV_QQ_Q(struct RATIONAL a, struct RATIONAL b)
+{
+	struct RATIONAL c;
+	c.numerator = MUL_ZZ_Z(a.numerator, b.denominator);
+	c.denominator = MUL_ZZ_Z(a.denominator, b.numerator);
+  c.sign = (a.sign == b.sign) ? 0 : 1;
+	return c;
+}
