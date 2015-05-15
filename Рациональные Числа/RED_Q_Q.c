@@ -24,10 +24,10 @@ a - дробь
 группа 4306
 */
 
-RATIONAL RED_QQ_Q (RATIONAL a)
+struct RATIONAL RED_QQ_Q (struct RATIONAL a)
   {
-    RATIONAL b; //Возвращаемая дробь
-  	NATURAL NOD=GCF_NN_N(a.numerator,a.denominator); //НОД числителя и знаменателя
+    struct RATIONAL b; //Возвращаемая дробь
+  	struct NATURAL NOD=GCF_NN_N(a.numerator,a.denominator); //НОД числителя и знаменателя
   	b.numerator=DIV_ZZ_Z(a.numerator,NOD);
   	b.denominator=DIV_ZZ_Z(a.denominator,NOD);
   	b.sign=a.sign;
