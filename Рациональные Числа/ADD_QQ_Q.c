@@ -31,8 +31,8 @@ struct RATIONAL ADD_QQ_Q(RATIONAL number1,RATIONAL number2){
       sum.sign = ((COM_NN_D(number1.numerator,number2.numerator))?number1:number2).sign; //Выбираем знак суммы
     }                                                                                    //как знак большего числа
     else //Если дроби одного знака
-      sum.numerator = ADD_QQ_Q(number1.numerator,number2.numerator);
-      sum.denominator = ADD_QQ_Q(number1.denominator,number2.denominator);
+      sum.numerator = ADD_NN_N(number1.numerator,number2.numerator);
+      sum.denominator = ADD_NN_N(number1.denominator,number2.denominator);
       sum.sign = number1.sign;
   }
   return sum;
