@@ -1,83 +1,39 @@
 //  ADD_QQ_Q
 //  01.05.15.
 //  Сложение дробей
-int ADD_QQ_Q(NATURAL chislitel_1,NATURAL znamenatel_1,short znak_1, NATURAL chislitel_2,NATURAL znamenatel_2, short znak_2, NATURAL * otvet_chislitel,NATURAL * otvet_znamenatel, short * otvet_znak)
-// chislitel_1 - числитель первой дроби, аналог znamenatel_1
-// znamenatel_2 - знаменатель второй дроби, аналог chislitel_2
-// otvet_chislitel - АДРЕС переменной для хранения числителя получившейся дроби, аналог otvet_znamenatel
-{
-    int NOK; //НОК знаменателей
-    int mnojitel_1, mnojitel_2; // множители числителей
-    if (znamenatel_1==0 || znamenatel_2==0)
-    {
-        puts("Функция: ADD_QQ_Q; Знаменатель дроби равен 0!");
-        return 0;  // код ошибки
-    }
-  
-    NOK = LCM_NN_N(znamenatel_1,znamenatel_2); // НОК целых чисел
-    
-    mnojitel_1 = NOK / znamenatel_1;
-    mnojitel_2 = NOK / znamenatel_2;
-    
-    chislitel_1 = MUL_ZZ_Z(chislitel_1, mnojitel_1); // умножение целых чисел
-    chislitel_2 = MUL_ZZ_Z(chislitel_2, mnojitel_2);
-    
-    if (znak_1 == 1 || znak_2 == 1) // если какое-то отрицательное
-    {
-        if (znak_1 == 1 && znak_2 == 1) // если оба отрицательные
-        {
-            *otvet_chislitel = ADD_ZZ_Z(chislitel_1, chislitel_2); //  сложение целых чисел
-            *otvet_znamenatel = NOK;
-            *otvet_znak = 1;
-            return 1;
-        }
-        // ************
-        if (znak_1 == 1 && znak_2 == 0) // первая дробь отрицательна
-        {
-            if (chislitel_1 >= chislitel_2)
-            {
-                *otvet_chislitel = SUB_NN_N(chislitel_1, chislitel_2); // вычитание из большего меньшее
-                *otvet_znamenatel = NOK;
-                *otvet_znak = 1;
-                return 1;
-            }
-            else
-            {
-                *otvet_chislitel = SUB_NN_N(chislitel_2, chislitel_1); // вычитание из большего меньшее
-                *otvet_znamenatel = NOK;
-                *otvet_znak = 0;
-                return 1;
-            }
-        }
-        // ************
-        if (znak_1 == 0 && znak_2 == 1) // вторая дробь отрицательна
-        {
-            if (chislitel_1 >= chislitel_2)
-            {
-                *otvet_chislitel = SUB_NN_N(chislitel_1, chislitel_2); // вычитание из большего меньшее
-                *otvet_znamenatel = NOK;
-                *otvet_znak = 0;
-                return 1;
-            }
-            else
-            {
-                *otvet_chislitel = SUB_NN_N(chislitel_2, chislitel_1); // вычитание из большего меньшее
-                *otvet_znamenatel = NOK;
-                *otvet_znak = 1;
-                return 1;
-            }
 
-        }
-    }
-    // ************
-    else // оба числа положительны
-    {
-        *otvet_chislitel = ADD_ZZ_Z(chislitel_1, chislitel_2); //  сложение целых чисел
-        *otvet_znamenatel = NOK;
-        *otvet_znak = 0;
-    }
-   
+struct RATIONAL ADD_QQ_Q(RATIONAL number1,RATIONAL number2){
+  
+  struct NATURAL NOK; //Наименьшее общее кратное
+  struct NATURAL factor1,factor2; //Множители
+  struct NATURAL sum;
+  
+  //Выделение памяти
+  sum.numerator = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
+  sum.denominator = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
+  sum.sign = ;
+  
+  if(!(NZER_N_B(number1.denominator))||!(NZER_N_B(number2.denominator)))
+    puts("Ошибка! Отрицательный знаменатель на входе!");
     
-    return 1; // корректное завершение программы
+  else{
+    NOK = LCM_NN_N(number1.denominator,number2.denominator);
+    
+    factor1 = DIV_NN_N(NOK,number1.denominator);
+    factor2 = DIV_NN_N(NOK,number2.denominator);
+    
+    number1.numerator = MUL_NN_N(factor1,number1.numerator);
+    number2.numerator = MUL_NN_N(factor2,number2.numerator);
+    
+    if(number1.sign^number2.sign){ // Если дроби разных знаков
+      sum.numerator = SUB_NN_N(number1.numerator,number2.numerator);
+      sum.denominator = SUB_NN_N(number1.denominator,number2.denominator);
+      sum.sign = ((COM_NN_D(number1.numerator,number2.numerator))?number1:number2).sign; //Выбираем знак суммы
+    }                                                                                    //как знак большего числа
+    else //Если дроби одного знака
+      sum.numerator = ADD_QQ_Q(number1.numerator,number2.numerator);
+      sum.denominator = ADD_QQ_Q(number1.denominator,number2.denominator);
+      sum.sign = number1.sign;
+  }
+  return sum;
 }
-//________________________________________________________________________________________
