@@ -14,10 +14,10 @@ TRANS_Z_N - Преобразование целого неотрицательн
 struct NATURAL TRANS_Z_N(struct INTEGER inp_num)
 {
 	struct NATURAL out_num;
-         out_num->number = (int*)malloc(inp_num->index * sizeof(int));
+         out_num.number = (int*)malloc(inp_num->index * sizeof(int));
          for(int i = 0; i < inp_num->index; i++)
-	   out_num->number[i] = inp_num->number[i];  //Копируем целое число в натуральное без знака
-	 out_num->index = inp_num->index;
+	   out_num.number[i] = inp_num.number[i];  //Копируем целое число в натуральное без знака
+	 out_num.index = inp_num.index;
 	
 	return out_num;
 }
