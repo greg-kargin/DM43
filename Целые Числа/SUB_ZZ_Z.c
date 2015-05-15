@@ -15,19 +15,9 @@
 #include "SUB_NN_N.c"
 #include "MUL_Z - _Z.c"
 
-struct INTEGER
-{
-  struct NATURAL
-    {
-    int*number;//указатель на массив цифр числа
-    int index; //номер старшего разряда
-    } natural_part;
-  short sign;//знак числа (1 — минус, 0 — плюс)
-};
-
-INTEGER SUB_ZZ_Z(INTEGER minuend, INTEGER subtrahend)  // result = minuend - subtrahend
+struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // result = minuend - subtrahend
   {
-  INTEGER result;
+  struct INTEGER result;
   /* Проверить числа на равенство */
   if (COM_NN_D(ABS_Z_N(minuend), ABS_Z_N(subtrahend)) == 0)
     {
