@@ -16,18 +16,14 @@ b - рациональный коэффициент
 группа 4306
 */
 
-POLYNOMIAL MUL_P_Q (POLYNOMIAL a, RATIONAL b)
-  {
-  	POLYNOMIAL c;
-  	for(int i=0; i<degree, i++)
-  	  c.(factors+i).numerator = MUL_ZZ_Z (a.(factors+i).numerator, b.numerator);
-  	  c.(factors+i).denominator = MUL_ZZ_Z (a.(factors+i).denominator, b.denominator);
-  	  if(a.(factors+i).sign == 1 && b.(factors+i).sign == 1)
-  	    c.(factors+i).sign = 0;
-  	  else
-  	    if(a.(factors+i).sign == 1 || b.(factors+i).sign == 1)
-  	      c.(factors+i).sign = 1;
-  	    else
-  	      c.(factors+i).sign = 0;
-  	return c;
-  }
+struct POLYNOMIAL MUL_P_Q(struct POLYNOMIAL a, struct RATIONAL b)
+{
+	struct POLYNOMIAL c;
+  for (int i = 0; i<a.degree; i++)
+    {
+    c.factors[i].numerator = MUL_ZZ_Z(a.factors[i].numerator, b.numerator);
+    c.factors[i].denominator = MUL_ZZ_Z(a.factors[i].denominator, b.denominator);
+    c.factors[i].sign = (a.factors[i].sign == b.sign) ? 0 : 1;
+    }
+	return c;
+}
