@@ -10,13 +10,8 @@
 //     умноженного на цифру, в случае неотрицательного результата
 // Филькина - Никифоров - 4305
  
-struct NATURAL SUB_NDN_N(struct NATURAL a, struct NATURAL b, struct NATURAL c)
+struct NATURAL SUB_NDN_N(struct NATURAL a, struct NATURAL b, int c) //пойдёт
 {
-  struct INTEGER r;
-  if (COM_NN_D(a, b) == 2)
-    b = MUL_ND_N(b, c);
-  r = SUB_NN_N(b, a);
-  if (COM_NN_D(a, b) == 1)
-    r.sign = 1;
-  return r;
+	struct NATURAL r, t;
+	return (r = (COM_NN_D(a, t = MUL_ND_N(b, c)) != 1) ? SUB_NN_N(a, t) : SUB_NN_N(a, b));
 }
