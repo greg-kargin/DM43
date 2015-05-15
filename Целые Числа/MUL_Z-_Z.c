@@ -1,4 +1,4 @@
-void MUL_Z -_Z(INTEGER f)
+void MUL_Z_Z(struct INTEGER f) //пойдёт
 {
-	f.sing = !f.sign;
+	f.sign *= -1;
 }
