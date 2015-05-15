@@ -1,14 +1,16 @@
 
-NATURAL MUL_NN_N(NATURAL E,NATURAL B)
-{
+struct NATURAL MUL_NN_N(struct NATURAL E, struct NATURAL B)
+  {
+  // Инициализация числа
+  struct NATURAL result;
+  result.index = ( (E.index * B.index) / 10 > 0) ? (i + j) : (i + j - 1);
   int i;
-  for(i=0;i<B.n;i++)
-    {
-      E=MUL_ND_N(E,B.A[i]);
-      E=MUL_Nk_N(E,i);
-    } 
-  return(E);
-}    
+  for (i = 0; i < result.index; ++i)
+    result.number[i] = 0;
+  
+  for (i = 0; i < B.index; ++i)
+    result = ADD_NN_N( result, MUL_ND_N(MUL_Nk_N(E, i), B.number[i]) );
+  }  
       
 /*Подключаемые модули:
   MUL_ND_N - умножение числа на цифру
