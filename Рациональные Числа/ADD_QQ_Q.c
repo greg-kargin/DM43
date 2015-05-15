@@ -9,9 +9,9 @@ struct RATIONAL ADD_QQ_Q(RATIONAL number1,RATIONAL number2){
   struct NATURAL sum;
   
   //Выделение памяти
-  sum.numerator = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
-  sum.denominator = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
-  sum.sign = ;
+  sum.numerator.number = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
+  sum.denominator.number = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
+  sum.sign = 0;
   
   if(!(NZER_N_B(number1.denominator))||!(NZER_N_B(number2.denominator)))
     puts("Ошибка! Отрицательный знаменатель на входе!");
