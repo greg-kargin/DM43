@@ -12,7 +12,7 @@
 struct POLYNOMIAL DIV_PP_P(struct POLYNOMIAL a, struct POLYNOMIAL b)
 {
 	struct POLYNOMIAL res;
-	int i, j, k, n, m;
+	int i, k, n, m;
 	n = DEG_P_N(a); m = DEG_P_N(b);
 	k = n - m;
 	res.degree = k;
@@ -20,8 +20,8 @@ struct POLYNOMIAL DIV_PP_P(struct POLYNOMIAL a, struct POLYNOMIAL b)
 	for (; k >= 0; k--)
 	{
 		res.factors[k] = DIV_QQ_Q(a.factors[m + k], b.factors[m]);
-		for (i = m + k; j >= k; j--)
-			a.factors[j] = SUB_QQ_Q(a.factors[j], MUL_QQ_Q(res.factors[k], b.factors[j - k]));
+		for (i = m + k; i >= k; i--)
+			a.factors[i] = SUB_QQ_Q(a.factors[i], MUL_QQ_Q(res.factors[k], b.factors[i - k]));
 	}
 	return res;
 }
