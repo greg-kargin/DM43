@@ -15,28 +15,18 @@
 #include "SUB_NN_N.c"
 #include "MUL_Z - _Z.c"
 
-struct INTEGER
-{
-  struct NATURAL
-    {
-    int*number;//указатель на массив цифр числа
-    int index; //номер старшего разряда
-    } natural_part;
-  short sign;//знак числа (1 — минус, 0 — плюс)
-};
-
-INTEGER SUB_ZZ_Z(INTEGER minuend, INTEGER subtrahend)  // result = minuend + subtrahend
+struct INTEGER SUB_ZZ_Z(struct INTEGER summand1, struct INTEGER summand2)  // result = summand1 + summand2
   {
-  INTEGER result;
+  struct INTEGER result;
   /* Проверить числа на равенство */
-  if (COM_NN_D(ABS_Z_N(minuend), ABS_Z_N(subtrahend)) == 0)
+  if (COM_NN_D(ABS_Z_N(summand1), ABS_Z_N(summand2)) == 0)
     {
     /* Числа равны по модулю */
-    if (POZ_Z_D(minuend) == POZ_Z_D(subtrahend))
+    if (POZ_Z_D(summand1) == POZ_Z_D(summand2))
       /* знаки одинаковы */
       {
-      result.natural_part = ADD_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
-      result.sign = minuend.sign;
+      result.natural_part = ADD_NN_N(ABS_Z_N(summand1), ABS_Z_N(summand2));
+      result.sign = summand1.sign;
       }
     else
       {
@@ -51,17 +41,17 @@ INTEGER SUB_ZZ_Z(INTEGER minuend, INTEGER subtrahend)  // result = minuend + sub
   else
     {
     /* Числа не равны */
-    if (POZ_Z_D(minuend) == POZ_Z_D(subtrahend))
+    if (POZ_Z_D(summand1) == POZ_Z_D(summand2))
       {
       /* Знаки совпадают */
-      result.natural_part = ADD_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
-      result.sign = POZ_Z_D(minuend);
+      result.natural_part = ADD_NN_N(ABS_Z_N(summand1), ABS_Z_N(summand2));
+      result.sign = POZ_Z_D(summand1);
       }
     else
       {
       /* Знаки разные */
-      result.natural_part = SUB_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
-      result.sign = POZ_Z_D(minuend);
+      result.natural_part = SUB_NN_N(ABS_Z_N(summand1), ABS_Z_N(summand2));
+      result.sign = POZ_Z_D(summand1);
       }
     }
 
