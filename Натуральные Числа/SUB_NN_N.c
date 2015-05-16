@@ -15,7 +15,7 @@ rec - результат вычитания
 группа 4305
 */
 
-struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b) //пойдёт
+struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
 {
 	struct NATURAL first, second, res;
 	bool flag = true;
