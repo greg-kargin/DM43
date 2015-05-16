@@ -6,6 +6,7 @@
 #include "integer.h"
 #include "rational.h"
 #include "polynom.h"
+#include "inputs.h"
 
 int main(int argc, char* argv[])
   {
@@ -41,11 +42,12 @@ int main(int argc, char* argv[])
       }
 
     system ("cls");
-    int item = 0;
+    int item = -1;
 
     switch (menu_item)
       {
       case MENU_NATURAL:
+        printf ("0. %s\n", "Ввод натуральных чисел");
         printf ("1. %s\n", "Сравнение чисел");
         printf ("2. %s\n", "Проверка на равенство нулю");
         printf ("3. %s\n", "Добавление единицы");
@@ -61,17 +63,21 @@ int main(int argc, char* argv[])
         printf ("12. %s\n", "Остаток от деления");
         printf ("13. %s\n", "НОД двух чисел");
         printf ("14. %s\n", "НОК двух чисел");
-        item = 0;
-        while (item < 1 || item > 15)
+        item = -1;
+        while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
           scanf ("%d", &item);
-          if (item < 1 || item > 15)
+          if (item < 0 || item > 15)
             printf ("Неверный ввод!\n")
           }
         
         switch (item)
           {
+          case 0:
+          An=ENNAT();
+          Bn=ENNAT();
+          break;
           case 1:
           break;
           
@@ -144,6 +150,7 @@ int main(int argc, char* argv[])
       break;
 
       case MENU_INTEGER:
+        printf ("0. %s\n", "Ввод целых чисел");  
         printf ("1. %s\n", "Абсолютная величина числа");
         printf ("2. %s\n", "Определение положительности числа");
         printf ("3. %s\n", "Умножение числа на -1");
@@ -155,17 +162,21 @@ int main(int argc, char* argv[])
         printf ("9. %s\n", "Частное от деления");
         printf ("10. %s\n", "Остаток от деления");
         printf ("11. %s\n", "Возврат в меню");
-        item = 0;
-        while (item < 1 || item > 15)
+        item = -1;
+        while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
           scanf ("%d", &item);
-          if (item < 1 || item > 15)
+          if (item < 0 || item > 15)
             printf ("Неверный ввод!\n")
           }
           
         switch (item)
           {
+            case 0:
+            Ai=ENINT();
+            Bi=ENINT();
+            break;
           case 1:
           break;
           
@@ -208,6 +219,7 @@ int main(int argc, char* argv[])
       break;
 
       case MENU_RATIONAL:
+      printf ("0. %s\n", "Ввод рациональных чисел");
         printf ("1. %s\n", "Сокращение дроби");
         printf ("2. %s\n", "Проверка на целое");
         printf ("3. %s\n", "Преообразование целого в дробное");
@@ -217,17 +229,21 @@ int main(int argc, char* argv[])
         printf ("7. %s\n", "Умножение");
         printf ("8. %s\n", "Деление");
         printf ("9. %s\n", "Возврат в меню");
-        item = 0;
-        while (item < 1 || item > 15)
+        item = -1;
+        while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
           scanf ("%d", &item);
-          if (item < 1 || item > 15)
+          if (item < 0 || item > 15)
             printf ("Неверный ввод!\n")
           }
           
         switch (item)
           {
+            case 0:
+            Ar=ENRAT();
+            Br=ENRAT();
+            break;
           case 1:
           Ar = RED_Q_Q(Ar);
           break;
@@ -261,6 +277,7 @@ int main(int argc, char* argv[])
       break;
 
       case MENU_POLYNOMS:
+      printf ("0. %s\n", "Ввод полиномов");
         printf ("1. %s\n", "Сложение многочленов");
         printf ("2. %s\n", "Вычитание многочленов");
         printf ("3. %s\n", "Умножение многочлена на рациональное число");
@@ -276,17 +293,21 @@ int main(int argc, char* argv[])
         printf ("12. %s\n", "Производная многочлена");
         printf ("13. %s\n", "Преобразование многочлена - кратные корни в простые");
         printf ("14. %s\n", "Возврат в меню");
-        item = 0;
-        while (item < 1 || item > 15)
+        item = -1;
+        while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
           scanf ("%d", &item);
-          if (item < 1 || item > 15)
+          if (item < 0 || item > 15)
             printf ("Неверный ввод!\n")
           }
           
         switch (item)
           {
+            case 0:
+            Ap=ENPOL();
+            Bp=ENPOL();
+            break;
           case 1:
           break;
           
