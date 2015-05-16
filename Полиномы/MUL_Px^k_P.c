@@ -1,14 +1,19 @@
 
-int* MUL_Pxk_P(int* m,int* A,int k)
-{
-  int j;
-  int *p=NULL;
-  p=(int*)malloc((*m+k+1)*sizeof(int));    
-  for(j=0;j<=*m;j++)
-    p[j+k]=A[j];  
-  *m=*m+k;  
-  return(p);
-}    
+struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k)
+  {
+  struct POLYNOMIAL result;
+  result.degree = polynom.degree + k;
+  result.factors = (struct POLYNOMIAL*)malloc( (result.degree + 1) * sizeof(struct POLYNOMIAL) );
+  int i;
+  for (i = result.degree; i >= k; --i)
+    result.factors[i] = polynom.factors[i - k];
+  for (i = 0; i < k; ++i)
+    {
+    polynom.factors[i].denominator = SUB_QQ_Q (polynom.factors[i].denominator, polynom.factors[i].denominator);
+    }
+
+  return polynom;
+  }
       
 /*Подключаемых модулей нет
   int* MUL_Pxk_P(int* ,int* ,int ) - прототип
