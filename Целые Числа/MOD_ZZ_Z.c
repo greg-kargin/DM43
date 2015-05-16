@@ -22,7 +22,7 @@ struct INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b)
   struct INTEGER result, c, d;
   c=DIV_ZZ_Z(a, b);
   d=TRANS_N_Z(b);
-  c=MULL_ZZ_Z(c, d);
+  c=MUL_ZZ_Z(c, d);
   result=SUB_Z_Z(a, c);
   return result;
 }
