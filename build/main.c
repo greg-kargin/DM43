@@ -9,6 +9,13 @@
 
 int main(int argc, char* argv[])
   {
+  struct NATURAL An, Bn, Cn;
+  struct INTEGER Ai, Bi, Ci;
+  struct RATIONAL Ar, Br, Cr;
+  struct POLYNOMIAL Ap, Bp, Cp;
+  
+  char ch = 0;
+    
   bool repeat = true;
 
   while ( repeat )
@@ -62,6 +69,78 @@ int main(int argc, char* argv[])
           if (item < 1 || item > 15)
             printf ("Неверный ввод!\n")
           }
+        
+        switch (item)
+          {
+          case 1:
+          break;
+          
+          case 2:
+          ch = 0;
+          while (ch < 'A' || ch 'C')
+            {
+            printf ("Выберите проверяемое число (A, B или C): ");
+            scanf ("%c", &ch);
+            if (ch < 'A' || ch > 'C')
+              printf ("Неверный ввод!\n");
+            }
+          switch (ch)
+            {
+            case 'A':
+            printf ("Число А %sравно нулю", ( NZER_N_B(An) )? "" : "не ");
+            break;
+            
+            case 'B':
+            printf ("Число B %sравно нулю", ( NZER_N_B(Bn) )? "" : "не ");
+            break;
+            
+            case 'C':
+            printf ("Число C %sравно нулю", ( NZER_N_B(Cn) )? "" : "не ");
+            break;
+            }
+          break;
+          
+          case 3:
+          break;
+                    
+          case 4:
+          break;
+                    
+          case 5:
+          break;
+                    
+          case 6:
+          break;
+                    
+          case 7:
+          break;
+                    
+          case 8:
+          Cn = MUL_NN(An, Bn);
+          break;
+                    
+          case 9:
+          break;
+                    
+          case 10:
+          break;
+                    
+          case 11:
+          break;
+                    
+          case 12:
+          break;
+                    
+          case 13:
+          break;
+          
+          case 14:
+          Cn = LCM_NN_N (An, Bn);
+          break;
+          
+          case 15:
+          break;
+          }
       break;
 
       case MENU_INTEGER:
@@ -84,6 +163,48 @@ int main(int argc, char* argv[])
           if (item < 1 || item > 15)
             printf ("Неверный ввод!\n")
           }
+          
+        switch (item)
+          {
+          case 1:
+          break;
+          
+          case 2:
+          break;
+          
+          case 3:
+          break;
+                    
+          case 4:
+          break;
+                    
+          case 5:
+          Cn = TRANS_Z_N(Ci);
+          break;
+                    
+          case 6:
+          Ci = ADD_ZZ_Z (Ai, Bi);
+          break;
+                    
+          case 7:
+          Ci = SUB_ZZ_Z (Ai, Bi);
+          break;
+                    
+          case 8:
+          Ci = MUL_ZZ_Z (Ai, Bi);
+          break;
+                    
+          case 9:
+          Ci = DIV_ZZ_Z (Ai, Bi);
+          break;
+                    
+          case 10:
+          Ci = MOD_ZZ_Z (Ai, Bi);
+          break;
+                    
+          case 11:
+          break;
+          }
       break;
 
       case MENU_RATIONAL:
@@ -104,10 +225,42 @@ int main(int argc, char* argv[])
           if (item < 1 || item > 15)
             printf ("Неверный ввод!\n")
           }
+          
+        switch (item)
+          {
+          case 1:
+          Ar = RED_Q_Q(Ar);
+          break;
+          
+          case 2:
+          break;
+          
+          case 3:
+          break;
+                    
+          case 4:
+          break;
+                    
+          case 5:
+          break;
+                    
+          case 6:
+          break;
+                    
+          case 7:
+          Cr = MUL_QQ_Q(Ar, Br);
+          break;
+                    
+          case 8:
+          Cr = DIV_QQ_Q(Ar, Br);
+          break;
+                    
+          case 9:
+          break;
+          }
       break;
 
       case MENU_POLYNOMS:
-        menuPolynom();
         printf ("1. %s\n", "Сложение многочленов");
         printf ("2. %s\n", "Вычитание многочленов");
         printf ("3. %s\n", "Умножение многочлена на рациональное число");
@@ -130,6 +283,64 @@ int main(int argc, char* argv[])
           scanf ("%d", &item);
           if (item < 1 || item > 15)
             printf ("Неверный ввод!\n")
+          }
+          
+        switch (item)
+          {
+          case 1:
+          break;
+          
+          case 2:
+          break;
+          
+          case 3:
+          Ap = MUL_P_Q(Ap);
+          break;
+                    
+          case 4:
+          ch = 0;
+          while (ch < '0' || ch > '9')
+            {
+            printf ("Введите k: ");
+            scanf ("%c", &ch);
+            if (ch < '0' || ch > '9')
+              printf ("Неверный ввод!\n");
+            }
+          Ap = MUL_Px^k_P(Ap, (int)(ch - 48));
+          break;
+                    
+          case 5:
+          Cr = LED_P_Z(Ap);
+          break;
+                    
+          case 6:
+          printf ("Степень многочлена А: %d", DEG_P_N(Ap));
+          break;
+                    
+          case 7:
+          break;
+                    
+          case 8:
+          Cp = MUL_PP_P (Ap, Bp);
+          break;
+                    
+          case 9:
+          break;
+                    
+          case 10:
+          break;
+                    
+          case 11:
+          break;
+                    
+          case 12:
+          break;
+                    
+          case 13:
+          break;
+          
+          case 14:
+          break;
           }
       break;
 
