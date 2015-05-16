@@ -1,16 +1,4 @@
 /*
-Подгружаемые модули:
-LCM_NN_N //НОК
-MUL_ZZ_Z //Умножение
-DIV_NN_N // Деление
-SUB_ZZ_Z // Вычитание
-TRANS_N_Z //Перевод из натурального в целое
-
-Описание переменных:
-a - первая дробь
-b - вторая дробь
-с - новая дробь
-
 Описание значения, возвращаемого функцией:
 Функция возвращает новую дробь, которая является результатом вычитания.
 
@@ -19,26 +7,51 @@ b - вторая дробь
 Рогачева Екатерина
 группа 4305
 */
-RATIONAL SUB_QQ_Q(RATIONAL a, RATIONAL b)
-{
-RATIONAL c;
-NATURAL nok, k1, k2;
-INTEGER n1, n2, d1, d2;
-//Нахождение НОК
-nok = LCM_NN_N(a.denominator, b.denominator);
-
-// Нахождение множителей числителей
-k1 = DIV_NN_N(nok, a.denominator);
-n1 = TRANS_N_Z(k1);
-k2 = DIV_NN_N(nok, b.denominator);
-n2 = TRANS_N_Z(k2);
-
-// Приведение к общему знаменателю
-c.denominator = nok;
-d1 = MUL_ZZ_Z(a.numerator, n1);
-d2 = MUL_ZZ_Z(b.numerator, n2);
-
-// Вычитание
-c.numerator = SUB_ZZ_Z(d1, d2);
-return c;
+struct RATIONAL SUB_QQ_Q(RATIONAL number1,RATIONAL number2){
+  //Вычитание из number1 number2
+  
+  struct NATURAL NOK; //Наименьшее общее кратное
+  struct NATURAL factor1,factor2; //Множители
+  struct RATIONAL result;
+  
+  //Выделение памяти
+  result.numerator = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index)*sizeof(int));
+  result.denominator = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
+  result.sign = 0;
+  
+  if(!(NZER_N_B(number1.denominator))||!(NZER_N_B(number2.denominator)))
+    puts("Ошибка! Отрицательный знаменатель на входе!");
+    
+  else{
+    NOK = LCM_NN_N(number1.denominator,number2.denominator);
+    
+    factor1 = DIV_NN_N(NOK,number1.denominator);
+    factor2 = DIV_NN_N(NOK,number2.denominator);
+    
+    number1.numerator = MUL_NN_N(factor1,number1.numerator);
+    number2.numerator = MUL_NN_N(factor2,number2.numerator);
+    
+    if(number1.sign == number2.sign){ // Если дроби одного знака
+      result.numerator = SUB_NN_N(number1.numerator,number2.numerator);
+      result.denominator = NOK;
+      if(!COM_NN_D(number1.numerator,number2.numerator)){ //Число1 > Число2
+        if(!number2.sign)//знак положителен
+          result.sign = 0;
+        else //знак отрицателен
+          result.sign = 1;
+      else //Число2 > Число1
+        if(!number1.sign)//знак положителен
+          result.sign = 1;
+        else //знак отрицателен
+          result.sign = 0;
+    }
+    else //Если дроби разных знаков
+      result.numerator = ADD_QQ_Q(number1.numerator,number2.numerator);
+      result.denominator = NOK;
+      if(number1.sign)
+        result.sign = 0;
+      else
+        result.sign = 1;
+  }
+  return result;
 }
