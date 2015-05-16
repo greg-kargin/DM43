@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
       }
 
     system ("cls");
+    int item = 0;
 
     switch (menu_item)
       {
@@ -53,8 +54,14 @@ int main(int argc, char* argv[])
         printf ("12. %s\n", "Остаток от деления");
         printf ("13. %s\n", "НОД двух чисел");
         printf ("14. %s\n", "НОК двух чисел");
-        printf ("15. %s\n", "Возврат в меню");
-        printf ("%s", "Выберите действие: ");
+        item = 0;
+        while (item < 1 || item > 15)
+          {
+          printf ("15. %s\n", "Возврат в меню");
+          scanf ("%d", &item);
+          if (item < 1 || item > 15)
+            printf ("Неверный ввод!\n")
+          }
       break;
 
       case MENU_INTEGER:
@@ -69,7 +76,14 @@ int main(int argc, char* argv[])
         printf ("9. %s\n", "Частное от деления");
         printf ("10. %s\n", "Остаток от деления");
         printf ("11. %s\n", "Возврат в меню");
-        printf ("%s", "Выберите действие: ");
+        item = 0;
+        while (item < 1 || item > 15)
+          {
+          printf ("15. %s\n", "Возврат в меню");
+          scanf ("%d", &item);
+          if (item < 1 || item > 15)
+            printf ("Неверный ввод!\n")
+          }
       break;
 
       case MENU_RATIONAL:
@@ -82,7 +96,14 @@ int main(int argc, char* argv[])
         printf ("7. %s\n", "Умножение");
         printf ("8. %s\n", "Деление");
         printf ("9. %s\n", "Возврат в меню");
-        printf ("%s", "Выберите действие: ");
+        item = 0;
+        while (item < 1 || item > 15)
+          {
+          printf ("15. %s\n", "Возврат в меню");
+          scanf ("%d", &item);
+          if (item < 1 || item > 15)
+            printf ("Неверный ввод!\n")
+          }
       break;
 
       case MENU_POLYNOMS:
@@ -102,7 +123,14 @@ int main(int argc, char* argv[])
         printf ("12. %s\n", "Производная многочлена");
         printf ("13. %s\n", "Преобразование многочлена - кратные корни в простые");
         printf ("14. %s\n", "Возврат в меню");
-        printf ("%s", "Выберите действие: ");
+        item = 0;
+        while (item < 1 || item > 15)
+          {
+          printf ("15. %s\n", "Возврат в меню");
+          scanf ("%d", &item);
+          if (item < 1 || item > 15)
+            printf ("Неверный ввод!\n")
+          }
       break;
 
       case MENU_EXIT:
