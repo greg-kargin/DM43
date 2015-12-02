@@ -35,6 +35,7 @@ int main(int argc, char* argv[])
     while ( (menu_item < 1) || (menu_item > MENU_EXIT) )
       {
       printf ("%s", "Выберите пункт меню: ");
+      fflush(stdin);
       scanf ("%d", &menu_item);
 
       if ( (menu_item < 1) || (menu_item > MENU_EXIT) )
@@ -67,9 +68,11 @@ int main(int argc, char* argv[])
         while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
+          fflush(stdin);
           scanf ("%d", &item);
+          
           if (item < 0 || item > 15)
-            printf ("Неверный ввод!\n")
+            printf("Неверный ввод!\n");
           }
         
         switch (item)
@@ -83,7 +86,7 @@ int main(int argc, char* argv[])
           
           case 2:
           ch = 0;
-          while (ch < 'A' || ch 'C')
+          while (ch < 'A' || ch > 'C')
             {
             printf ("Выберите проверяемое число (A, B или C): ");
             scanf ("%c", &ch);
@@ -122,7 +125,7 @@ int main(int argc, char* argv[])
           break;
                     
           case 8:
-          Cn = MUL_NN(An, Bn);
+          //Cn = MUL_NN(An, Bn);
           break;
                     
           case 9:
@@ -141,14 +144,14 @@ int main(int argc, char* argv[])
           break;
           
           case 14:
-          Cn = LCM_NN_N (An, Bn);
+          //Cn = LCM_NN_N (An, Bn);
           break;
           
           case 15:
           break;
           }
       break;
-
+      /*
       case MENU_INTEGER:
         printf ("0. %s\n", "Ввод целых чисел");  
         printf ("1. %s\n", "Абсолютная величина числа");
@@ -233,9 +236,10 @@ int main(int argc, char* argv[])
         while (item < 0 || item > 15)
           {
           printf ("15. %s\n", "Возврат в меню");
+          fflush(stdin);
           scanf ("%d", &item);
           if (item < 0 || item > 15)
-            printf ("Неверный ввод!\n")
+            printf("Неверный ввод!\n");
           }
           
         switch (item)
@@ -327,7 +331,7 @@ int main(int argc, char* argv[])
             if (ch < '0' || ch > '9')
               printf ("Неверный ввод!\n");
             }
-          Ap = MUL_Px^k_P(Ap, (int)(ch - 48));
+          Ap = MUL_Pxk_P(Ap, (int)(ch - 48));
           break;
                     
           case 5:
@@ -364,7 +368,7 @@ int main(int argc, char* argv[])
           break;
           }
       break;
-
+      */
       case MENU_EXIT:
         repeat = 0;
       break;

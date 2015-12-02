@@ -1,7 +1,7 @@
-#ifndef NATURAL
-#define NATURAL
+#ifndef NATURAL_H
+#define NATURAL_H
 
 void menuNatural();
 
-#endif // NATURAL
+#endif // NATURAL_H
 

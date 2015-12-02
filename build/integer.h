@@ -1,7 +1,7 @@
-#ifndef INTEGER
-#define INTEGER
+#ifndef INTEGER_H
+#define INTEGER_H
 
 void menuInteger();
 
-#endif // INTEGER
+#endif // INTEGER_H
 
