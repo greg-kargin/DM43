@@ -1,18 +1,38 @@
-#include "integer.h"
-#include "stdio.h"
+#include "inputs.h"
 
-void menuInteger()
+struct NATURAL ENNAT()
   {
-  printf ("1. %s\n", "Абсолютная величина числа");
-  printf ("2. %s\n", "Определение положительности числа");
-  printf ("3. %s\n", "Умножение числа на -1");
-  printf ("4. %s\n", "Преобразование натурального в целое");
-  printf ("5. %s\n", "Преобразование целого неотрицательного в натуральное");
-  printf ("6. %s\n", "Сложение");
-  printf ("7. %s\n", "Вычитание");
-  printf ("8. %s\n", "Умножение");
-  printf ("9. %s\n", "Частное от деления");
-  printf ("10. %s\n", "Остаток от деления");
-  printf ("11. %s\n", "Возврат в меню");
-  printf ("%s", "Выберите действие: ");
+  struct NATURAL input;
+  input.index = 0;
+  input.number = NULL;
+  char *ch;
+  ch = (char*) malloc(2 * sizeof(char));
+  ch[1] = '\0';
+  do
+    {
+    ch[0] = getchar();
+    if (ch[0] == '0' && input.index == 0)
+      {
+      printf("Число не может начинаться с 0!\nПовторите ввод:");
+      fflush(stdin);
+      }
+    else
+    if (atoi(ch))
+      {
+      ++input.index;
+      input.number = (int*) realloc(input.number, input.index*sizeof(int));
+      input.number[input.index - 1] = atoi(ch);
+      }
+    else
+    if (ch[0] != '\n')
+      {
+      printf("В строку попали посторонние символы!\nПовторите ввод:");
+      free(input.number);
+      input.number = NULL;
+      input.index = 0;
+      fflush(stdin);
+      }
+    }
+    while (ch[0] != '\n');
+    return input;
   }

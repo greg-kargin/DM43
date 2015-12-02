@@ -78,7 +78,9 @@ int main(int argc, char* argv[])
         switch (item)
           {
           case 0:
+          printf("Введите натуральное число A (>0):");
           An=ENNAT();
+          printf("Введите натуральное число B (>0):");
           Bn=ENNAT();
           break;
           case 1:
