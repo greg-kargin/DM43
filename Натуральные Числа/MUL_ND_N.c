@@ -1,3 +1,4 @@
+#include "../build/main.h"
 struct NATURAL MUL_ND_N(struct NATURAL a, int k)
 {
 	struct NATURAL res; int i, p;

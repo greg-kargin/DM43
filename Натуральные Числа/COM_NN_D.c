@@ -2,6 +2,8 @@
 Сравнение натуральных чисел: 2 - если первое больше второго, 0, если равно, 1 иначе.
 Выполнили: Вовк К.В. Эмомов Г.С. (4305)
 */
+#include "../build/main.h"
+
 int COM_NN_D(struct NATURAL one,struct NATURAL two)
 {
     if(one.index > two.index) return 2;

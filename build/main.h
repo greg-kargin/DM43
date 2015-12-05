@@ -1,6 +1,6 @@
 #ifndef MAIN
 #define MAIN
-
+#include "stdlib.h"
 /* Именованные константы */
 
 #define POSITIVE 0

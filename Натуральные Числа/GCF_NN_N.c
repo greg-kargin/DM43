@@ -7,10 +7,12 @@
 
 // Используемые функции: 
 // COM_NN_D		NZER_N_B		MOD_NN_N
+#include "MOD_NN_N.c"
+#include "../build/main.h"
 
-NATURAL GCF_NN_N (NATURAL A, NATURAL B)
+struct NATURAL GCF_NN_N (struct NATURAL A, struct NATURAL B)
 {
-	NATURAL C; 
+	struct NATURAL C;
 	if (COM_NN_D (A, B) == 1)
 	{
 		C = A;

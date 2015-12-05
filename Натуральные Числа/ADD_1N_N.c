@@ -4,6 +4,7 @@
 // и номером старшего разряда index
 // Добавление 1 к натуральному числу
 // Аллаяров и Хабиров, гр. 4305
+#include "../build/main.h"
 
 struct NATURAL ADD_1N_N(struct NATURAL natural)
 {

@@ -6,17 +6,14 @@
 // 2-й параметр - Делитель
 // Находит остаток от деления двух натуральных чисел
 // Бельмач,Сафонов,Кондратьев - 4307
-#include "DIV_NN_N"
-#include "SUB_NDN_N"
-struct NATURAL
-{
-        int*number;//указатель на массив цифр числа
-        int index; //номер старшего разряда
-}
-NATURAL MOD_NN_N( NATURAL delimoe,NATURAL deletel) // chastnoe = delimoe / delitel
+#include "../build/main.h"
+#include "DIV_NN_N.c"
+#include "SUB_NDN_N.c"
+struct NATURAL MOD_NN_N(struct NATURAL delimoe, struct NATURAL deletel) // chastnoe = delimoe / delitel
 {
         int i = 1;
-        NATURAL chastnoe,NATURAL result;
+		struct NATURAL chastnoe;
+		struct NATURAL result;
         chastnoe = DIV_NN_N(delimoe, delitel)
                do
               {

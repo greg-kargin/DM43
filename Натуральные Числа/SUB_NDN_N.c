@@ -9,7 +9,7 @@
 // Возвращает результат вычитания из натурального другого натурального,
 //     умноженного на цифру, в случае неотрицательного результата
 // Филькина - Никифоров - 4305
- 
+#include "../build/main.h"
 struct NATURAL SUB_NDN_N(struct NATURAL a, struct NATURAL b, int c)
 {
 	struct NATURAL r, t;

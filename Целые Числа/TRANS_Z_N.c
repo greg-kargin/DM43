@@ -10,13 +10,14 @@ TRANS_Z_N - Преобразование целого неотрицательн
 
 Выполнили: Кучинский К.С. / Дубинкин Д.В. - 4306
 */
+#include "../build/main.h"
 
 struct NATURAL TRANS_Z_N(struct INTEGER inp_num)  // идиотизм исправлен
 {
   struct NATURAL out_num;
 
   out_num.index = inp_num.natural_part.index;
-  out_num.number = new int[out_num.index];
+  out_num.number = (int*)malloc(out_num.index*sizeof(int));
 
   int i;
   for (i = 0; i < out_num.index; ++i)

@@ -8,12 +8,13 @@
 
 // Выполняет вычитание целых чисел
 // Станевич, Денискова - 4306
+#include "../build/main.h"
 #include "ABS_Z_N.c"
 #include "POZ_Z_D.c"
-#include "COM_NN_D.c"
-#include "ADD_NN_N.c"
-#include "SUB_NN_N.c"
-#include "MUL_Z - _Z.c"
+#include "../Натуральные числа/COM_NN_D.c"
+#include "../Натуральные числа/ADD_NN_N.c"
+#include "../Натуральные числа/SUB_NN_N.c"
+#include "MUL_ZZ_Z.c"
 
 struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // result = minuend - subtrahend
   {

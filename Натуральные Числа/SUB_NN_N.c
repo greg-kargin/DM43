@@ -14,7 +14,7 @@ rec - результат вычитания
 Рогачева Екатерина
 группа 4305
 */
-
+#include "../build/main.h"
 struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
 {
 	struct NATURAL first, second, res;

@@ -7,20 +7,18 @@
 //2-ой параметр - структура с массивом цифр number и номером старшего разряда index делителя
 //Возвращает значение первой цифры от деления большего натурального на меньшее, домноженной на 10^k,где k - номер позиции этой цифры
 //Выполнили Романова А., Аббасова Т. гр.4307
-#include "MUL_Nk_N.c"
-#include "COM_NN_D.c"
+#include "MUL_NK_N.c"
 #include "SUB_NN_N.c"
+#include "../build/main.h"
 
 struct NATURAL DIV_NN_Dk(struct NATURAL A, struct NATURAL B)
 {
 	int flag, index, k; //k - степень, в которую потом будем возводить 10; index - старший коэффициент вспомогательной структуры
 	struct NATURAL Test, D; //Test - вспомогательная структура; D - структура для хранения первого числа от деления A на В
-	Test.number = NULL;
-	D.number = NULL;
 	Test.index = B.index; //старший разряд вспомогательной структуры
 	D.index = 0; // старший разряд первого числа от деления А на В
-	Test.number = (int*)realloc(Test.number, (Test.index + 1)*sizeof(int));
-	D.number = (int*)realloc(D.number, 1 * sizeof(int));
+	Test.number = (int*)malloc((Test.index + 1)*sizeof(int));
+	D.number = (int*)malloc(sizeof(int));
 
 	for (int i = A.index - Test.index, i1 = 0; i <= A.index; i++, i1++)
 		Test.number[i1] = A.number[i]; //присваивание первых n чисел делимого вспомогательному числу. n - старший разряд вспомогательного числа
@@ -51,5 +49,5 @@ struct NATURAL DIV_NN_Dk(struct NATURAL A, struct NATURAL B)
 			k = A.index - Test.index;//старший разряд числа, полученного от деления А на В
 		}
 	}
-	return (MUL_Nk_N(D, k)); //умножение первого числа от деления А на В на 10^k и возврат этого значения
+	return MUL_Nk_N(D, k); //умножение первого числа от деления А на В на 10^k и возврат этого значения
 }
