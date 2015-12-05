@@ -1,11 +1,10 @@
 #include "inputs.h"
-
 struct NATURAL ENNAT()
   {
   struct NATURAL input;
   input.index = 0;
   input.number = NULL;
-  char *ch;
+  char *ch=NULL;
   ch = (char*) malloc(2 * sizeof(char));
   ch[1] = '\0';
   do

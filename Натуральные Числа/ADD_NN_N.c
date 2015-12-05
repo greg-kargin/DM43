@@ -4,6 +4,7 @@
 
 // Выполняет сложение натуральных чисел
 #include "../build/main.h"
+
 struct NATURAL ADD_NN_N(struct NATURAL a, struct NATURAL b)
 {
 	int min = (COM_NN_D(a, b)==2) ? b.index : a.index;

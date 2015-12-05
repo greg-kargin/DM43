@@ -13,7 +13,7 @@
 Выполнили: Кучинский К.С. / Дубинкин Д.В. - 4306
 */
 #include "../build/main.h"
-#include "MULL_NN_N.c"
+
 struct NATURAL LCM_NN_N(struct NATURAL a, struct NATURAL b)
 {
 	return MUL_NN_N( DIV_NN_N( a, GCF_NN_N(a, b) ), b);

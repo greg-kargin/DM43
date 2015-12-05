@@ -15,10 +15,11 @@ rec - результат вычитания
 группа 4305
 */
 #include "../build/main.h"
+
 struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
 {
 	struct NATURAL first, second, res;
-	bool flag = true;
+	short int flag = 1;
 	int n, i;
 	//Находим большее/меньшее число
 	n = COM_NN_D(a, b);
@@ -69,7 +70,7 @@ struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
 			if (*(first.number + i) == 0)
 				first.index = first.index - 1;
 			else
-				flag = false;
+				flag = 0;
 		}
 		for (i = second.index; i < first.index; i++)
 		{

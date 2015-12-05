@@ -3,8 +3,7 @@
 Выполнили: Вовк К.В. Эмомов Г.С. (4305)
 */
 #include "../build/main.h"
-
-int COM_NN_D(struct NATURAL one,struct NATURAL two)
+int COM_NN_D(struct NATURAL one, struct NATURAL two)
 {
     if(one.index > two.index) return 2;
     if(two.index > one.index) return 1;

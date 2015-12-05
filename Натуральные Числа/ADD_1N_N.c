@@ -9,13 +9,13 @@
 struct NATURAL ADD_1N_N(struct NATURAL natural)
 {
 	int i, flag = 0; // flag - проверка на успешность выполнения операции
-	for (i = 0; i<natural.index && !flag; i++)
+	for (i = 0; i < natural.index && !flag; i++)
 		if (natural.number[i] == 9) // проверка, нужно ли делать перенос
 		{
 			natural.number[i] = 0;
-			if (i == natural.index - 1) // является ли текущая цифра последней при проверке
+			if (i == (natural.index - 1)) // является ли текущая цифра последней при проверке
 			{
-				natural.number = (int *)realloc(natural.number, (natural.index + 1)*sizeof(int));
+				natural.number = (int*)realloc(natural.number, (natural.index + 1)*sizeof(int));
 				natural.number[natural.index] = 1;
 				(natural.index)++;  // увеличиваем кол-во разрядов на 1
 				flag = 1;

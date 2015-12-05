@@ -6,14 +6,13 @@ NATURAL - первое натуральное число
 NATURAL - второе натуральное число
 Выполнили: Кановский, Веденин 4306*/
 #include "../build/main.h"
-#include "ADD_NN_N.c"
-#include "MUL_ND_N.c"
-#include "MUL_Nk_N.c"
+
 struct NATURAL MUL_NN_N(struct NATURAL E, struct NATURAL B)
   {
   // Инициализация числа
   struct NATURAL result;
-  result.index = ( (E.index * B.index) / 10 > 0) ? (i + j) : (i + j - 1);
+  result.index = ( (E.index * B.index) / 10 > 0) ? (E.index + B.index) : (E.index + B.index - 1);
+  result.number = (int*)malloc(result.index*sizeof(int));
   int i;
   for (i = 0; i < result.index; ++i)
     result.number[i] = 0;

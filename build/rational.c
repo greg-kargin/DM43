@@ -1,7 +1,7 @@
 #include "integer.h"
 #include "stdio.h"
 
-void menuInteger()
+/*void menuInteger()
   {
   printf ("1. %s\n", "Абсолютная величина числа");
   printf ("2. %s\n", "Определение положительности числа");
@@ -15,4 +15,4 @@ void menuInteger()
   printf ("10. %s\n", "Остаток от деления");
   printf ("11. %s\n", "Возврат в меню");
   printf ("%s", "Выберите действие: ");
-  }
+  }*/

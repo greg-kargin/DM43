@@ -1,6 +1,11 @@
 #ifndef MAIN
 #define MAIN
 #include "stdlib.h"
+#include "natural.h"
+#include "integer.h"
+#include "rational.h"
+#include "polynom.h"
+#include "inputs.h"
 /* Именованные константы */
 
 #define POSITIVE 0
