@@ -1,7 +1,7 @@
 #ifndef INTEGER_H
 #define INTEGER_H
 
-void menuInteger();
+int menuInteger();
 int ABS_Z_N(struct INTEGER A);
 struct INTEGER ADD_ZZ_Z(struct INTEGER summand1, struct INTEGER summand2);
 struct INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den);

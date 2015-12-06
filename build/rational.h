@@ -1,7 +1,7 @@
 #ifndef RATIONAL_H
 #define RATIONAL_H
 
-//void menuRational();
+int menuRational();
 struct RATIONAL ADD_QQ_Q(struct RATIONAL number1, struct RATIONAL number2);
 struct RATIONAL DIV_QQ_Q(struct RATIONAL a, struct RATIONAL b);
 int INT_Q_Z(struct RATIONAL a);

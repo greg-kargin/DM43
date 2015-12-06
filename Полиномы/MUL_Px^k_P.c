@@ -7,7 +7,7 @@ int - cтепень X^K
 #include "../build/main.h"
 struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k)
   {
-  struct POLYNOMIAL result;
+ /* struct POLYNOMIAL result;
   result.degree = polynom.degree + k;
   result.factors = (struct POLYNOMIAL*)malloc( (result.degree + 1) * sizeof(struct POLYNOMIAL) );
   int i;
@@ -18,6 +18,6 @@ struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k)
     polynom.factors[i].denominator = SUB_QQ_Q (polynom.factors[i].denominator, polynom.factors[i].denominator);
     }
 
-  return polynom;
+  return polynom;*/
   }
       

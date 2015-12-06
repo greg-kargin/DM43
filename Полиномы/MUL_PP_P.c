@@ -12,10 +12,10 @@
 
 struct POLYNOMIAL MUL_PP_P(struct POLYNOMIAL A, struct POLYNOMIAL B)
 {
-  struct POLYNOMIAL C;
+  struct POLYNOMIAL C=A;
   int i;
 
-  C.degree = A.degree + B.degree;                           //Старшая степень многочлена, полученного в результате умножения
+  /*C.degree = A.degree + B.degree;                           //Старшая степень многочлена, полученного в результате умножения
   C.factors = (struct RATIONAL*)malloc(C.degree*sizeof(struct RATIONAL*));  //Выделение памяти для массива коэффициентов многочлена, 
                                                               //полученного в результате умножения
   //Обнуление коэффициентов
@@ -23,6 +23,6 @@ struct POLYNOMIAL MUL_PP_P(struct POLYNOMIAL A, struct POLYNOMIAL B)
     C.factors[i].numerator[0] = 0;
   //Умножение первого многочлена на каждый член второго многочлена
   for (i = 0; i < B->degree + 1; i++)
-    C.factors = ADD_ZZ_Z(C.factors, MUL_P_Q(MUL_Pxk_P(A->factors, i), B->factors[i]));
+    C.factors = ADD_ZZ_Z(C.factors, MUL_P_Q(MUL_Pxk_P(A->factors, i), B->factors[i]));*/
   return C; //Возвращает указатель на структуру многочлена, полученного в результате умножения
 }

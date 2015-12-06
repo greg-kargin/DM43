@@ -4,7 +4,7 @@
 struct POLYNOMIAL ADD_PP_P(struct POLYNOMIAL first, struct POLYNOMIAL second)
 {
 	struct POLYNOMIAL result;
-	rezult.factors = NULL;
+	/*rezult.factors = NULL;
 	int mem = 0;
 	if (first.degree >= second.degree)
 	{
@@ -34,5 +34,5 @@ struct POLYNOMIAL ADD_PP_P(struct POLYNOMIAL first, struct POLYNOMIAL second)
 			rezult.factors[i] = second.factors[i];
 		}
 	}
-	return rezult;
+	return rezult;*/
 }

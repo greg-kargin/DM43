@@ -1,7 +1,6 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <locale.h>
-#include <stdbool.h>
 #include "main.h"
 
 int main(int argc, char* argv[])
@@ -18,7 +17,7 @@ int main(int argc, char* argv[])
 
 	char ch = 0;
 
-	bool repeat = true;
+	short int repeat = 1;
 
 	while (repeat)
 	{
@@ -31,7 +30,7 @@ int main(int argc, char* argv[])
 		printf("4. %s\n", "Действия с многочленами");
 		printf("5. %s\n", "Выход из программы");
 
-		_uint16 menu_item = enterIntNum(1, 5);
+		_uint16 menu_item = enterIntNumInterval(1, 5);
 
 		system("cls");
 		int item = -1;
@@ -41,26 +40,7 @@ int main(int argc, char* argv[])
 		case MENU_NATURAL:
 			do
 			{
-				system("cls");
-				printf("1. %s\n", "Ввод натуральных чисел");
-				printf("2. %s\n", "Вывод натуральных чисел");
-				printf("3. %s\n", "Сравнение чисел");
-				printf("4. %s\n", "Проверка на равенство нулю");
-				printf("5. %s\n", "Добавление единицы");
-				printf("6. %s\n", "Сложение");
-				printf("7. %s\n", "Вычитание");
-				printf("8. %s\n", "Умножение на цифру");
-				printf("9. %s\n", "Умножение на 10 в степени k");
-				printf("10. %s\n", "Умножение чисел");
-				printf("11. %s\n", "Вычитание числа, умноженного на цифру");
-				printf("12. %s\n", "Вычисления первой цифры деления большего\n    натурального на меньшее, домноженное на 10^k");
-				printf("13. %s\n", "Частное от деления");
-				printf("14. %s\n", "Остаток от деления");
-				printf("15. %s\n", "НОД двух чисел");
-				printf("16. %s\n", "НОК двух чисел");
-				printf("17. %s\n", "Возврат в меню");
-				item = enterIntNum(1, 17);
-				switch (item)
+				switch (item = menuNatural())
 				{
 				case 1:
 					printf("Введите натуральное число A (>0):");
@@ -81,7 +61,7 @@ int main(int argc, char* argv[])
 					if (Bn.index > 0)
 					{
 						printf("Число B:");
-						output_N(An);
+						output_N(Bn);
 						printf("\n");
 					}
 					else
@@ -89,7 +69,7 @@ int main(int argc, char* argv[])
 					if (Cn.index > 0)
 					{
 						printf("Число C:");
-						output_N(An);
+						output_N(Cn);
 						printf("\n");
 					}
 					else
@@ -108,14 +88,7 @@ int main(int argc, char* argv[])
 					break;
 
 				case 4:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите проверяемое число (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+					ch = enterCharInterval('A', 'C', "Выберите проверяемое число (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -133,14 +106,7 @@ int main(int argc, char* argv[])
 					break;
 
 				case 5:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для добавления единицы (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+					ch = enterCharInterval('A', 'C', "Выберите число для добавления единицы (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -164,34 +130,27 @@ int main(int argc, char* argv[])
 					break;
 
 				case 8:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для умножения (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+					ch = enterCharInterval('A', 'C', "Выберите число для умножения (A, B или C): ");
 					printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
 					switch (ch)
 					{
 					case 'A':
-						Cn = MUL_ND_N(An, enterIntNum(tMin, tMax));
+						Cn = MUL_ND_N(An, enterIntNumInterval(tMin, tMax));
 						break;
 
 					case 'B':
-						Cn = MUL_ND_N(Bn, enterIntNum(tMin, tMax));
+						Cn = MUL_ND_N(Bn, enterIntNumInterval(tMin, tMax));
 						break;
 
 					case 'C':
-						Cn = MUL_ND_N(Cn, enterIntNum(tMin, tMax));
+						Cn = MUL_ND_N(Cn, enterIntNumInterval(tMin, tMax));
 						break;
 					}
 					break;
 
 				case 9:
 					printf("Введите число k (от %d, до %d) ", tMin, tMax);
-					Cn = MUL_Nk_N(An, enterIntNum(tMin, tMax));
+					Cn = MUL_Nk_N(An, enterIntNumInterval(tMin, tMax));
 					break;
 
 				case 10:
@@ -200,7 +159,7 @@ int main(int argc, char* argv[])
 
 				case 11:
 					printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
-					Cn = SUB_NDN_N(An, Bn, enterIntNum(tMin, tMax));
+					Cn = SUB_NDN_N(An, Bn, enterIntNumInterval(tMin, tMax));
 					break;
 
 					printf("14. %s\n", "Остаток от деления");
@@ -234,37 +193,40 @@ int main(int argc, char* argv[])
 		case MENU_INTEGER:
 			do
 			{
-				printf("1. %s\n", "Ввод целых чисел");
-				printf("2. %s\n", "Абсолютная величина числа");
-				printf("3. %s\n", "Определение положительности числа");
-				printf("4. %s\n", "Изменение знака");
-				printf("5. %s\n", "Преобразование натурального в целое");
-				printf("6. %s\n", "Преобразование целого неотрицательного в натуральное");
-				printf("7. %s\n", "Сложение");
-				printf("8. %s\n", "Вычитание");
-				printf("9. %s\n", "Умножение");
-				printf("10. %s\n", "Частное от деления");
-				printf("11. %s\n", "Остаток от деления");
-				printf("12. %s\n", "Возврат в меню");
-
-				item = enterIntNum(1, 17);
-
-				switch (item)
+				switch (item = menuInteger())
 				{
 				case 1:
 					Ai = ENINT();
 					Bi = ENINT();
 					break;
-
 				case 2:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
+					if (Ai.natural_part.index > 0)
 					{
-						printf("Выберите число для изменения его на модуль (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
+						printf("Число А:");
+						output_Z(Ai);
+						printf("\n");
 					}
+					else
+						printf("Целое число A отсутствует\n");
+					if (Bi.natural_part.index > 0)
+					{
+						printf("Число B:");
+						output_Z(Bi);
+						printf("\n");
+					}
+					else
+						printf("Целое число B отсутствует\n");
+					if (Ci.natural_part.index > 0)
+					{
+						printf("Число C:");
+						output_Z(Ci);
+						printf("\n");
+					}
+					else
+						printf("Целое число C отсутствует\n");
+					break;
+				case 3:
+					ch = enterCharInterval('A', 'C', "Выберите число для изменения его на модуль (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -281,15 +243,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 3:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для добавления единицы (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 4:
+					ch = enterCharInterval('A', 'C', "Выберите число для добавления единицы (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -324,15 +279,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 4:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для изменения знака (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 5:
+					ch = enterCharInterval('A', 'C', "Выберите число для изменения знака (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -349,15 +297,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 5:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для преобразования (Ai=An, Bi=Bn или Ci=Cn): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 6:
+					ch = enterCharInterval('A', 'C', "Выберите число для преобразования (Ai=An, Bi=Bn или Ci=Cn): ");
 					switch (ch)
 					{
 					case 'A':
@@ -374,15 +315,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 6:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для преобразования (An=Ai, Bn=Bi или Cn=Ci): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 7:
+					ch = enterCharInterval('A', 'C', "Выберите число для преобразования (An=Ai, Bn=Bi или Cn=Ci): ");
 					switch (ch)
 					{
 					case 'A':
@@ -399,23 +333,23 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 7:
+				case 8:
 					Ci = ADD_ZZ_Z(Ai, Bi);
 					break;
 
-				case 8:
+				case 9:
 					Ci = SUB_ZZ_Z(Ai, Bi);
 					break;
 
-				case 9:
+				case 10:
 					Ci = MUL_ZZ_Z(Ai, Bi);
 					break;
 
-				case 10:
+				case 11:
 					Ci = DIV_ZZ_Z(Ai, Bi.natural_part);
 					break;
 
-				case 11:
+				case 12:
 					Ci = MOD_ZZ_Z(Ai, Bi.natural_part);
 					break;
 				}
@@ -429,19 +363,7 @@ int main(int argc, char* argv[])
 		case MENU_RATIONAL:
 			do
 			{
-				printf("1. %s\n", "Ввод рациональных чисел");
-				printf("2. %s\n", "Сокращение дроби");
-				printf("3. %s\n", "Проверка на целое");
-				printf("4. %s\n", "Преообразование целого в дробное");
-				printf("5. %s\n", "Преобразование дробного в целое");
-				printf("6. %s\n", "Сложение");
-				printf("7. %s\n", "Вычитание");
-				printf("8. %s\n", "Умножение");
-				printf("9. %s\n", "Деление");
-				printf("10. %s\n", "Возврат в меню");
-				item = enterIntNum(1, 10);
-
-				switch (item)
+				switch (item = menuRational())
 				{
 				case 1:
 					Ar = ENRAT();
@@ -449,14 +371,34 @@ int main(int argc, char* argv[])
 					break;
 
 				case 2:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
+					if (Ar.denominator.index > 0)
 					{
-						printf("Выберите число для сокращения (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
+						printf("Число А:");
+						output_Q(Ar);
+						printf("\n");
 					}
+					else
+						printf("Рациональное число A отсутствует\n");
+					if (Cr.denominator.index > 0)
+					{
+						printf("Число B:");
+						output_Q(Br);
+						printf("\n");
+					}
+					else
+						printf("Рациональное число B отсутствует\n");
+					if (Cr.denominator.index > 0)
+					{
+						printf("Число C:");
+						output_Q(Cr);
+						printf("\n");
+					}
+					else
+						printf("Рациональное число C отсутствует\n");
+					break;
+
+				case 3:
+					ch = enterCharInterval('A', 'C', "Выберите число для сокращения (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -473,15 +415,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 3:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для проверки на целое (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 4:
+					ch = enterCharInterval('A', 'C', "Выберите число для проверки на целое (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -507,19 +442,12 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 4:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для проверки на целое (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 5:
+					ch = enterCharInterval('A', 'C', "Выберите число для перевода из целого в рациальное (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
-						Ar=TRAN_Z_Q(Ai);
+						Ar = TRAN_Z_Q(Ai);
 						break;
 
 					case 'B':
@@ -532,15 +460,8 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 5:
-					ch = 0;
-					while (ch < 'A' || ch > 'C')
-					{
-						printf("Выберите число для проверки на целое (A, B или C): ");
-						scanf("%c", &ch);
-						if (ch < 'A' || ch > 'C')
-							printf("Неверный ввод!\n");
-					}
+				case 6:
+					ch = enterCharInterval('A', 'C', "Выберите число для перевода из рациального в целое (A, B или C): ");
 					switch (ch)
 					{
 					case 'A':
@@ -557,19 +478,19 @@ int main(int argc, char* argv[])
 					}
 					break;
 
-				case 6:
+				case 7:
 					Cr = ADD_QQ_Q(Ar, Br);
 					break;
 
-				case 7:
+				case 8:
 					Cr = SUB_QQ_Q(Ar, Br);
 					break;
 
-				case 8:
+				case 9:
 					Cr = MUL_QQ_Q(Ar, Br);
 					break;
 
-				case 9:
+				case 10:
 					Cr = DIV_QQ_Q(Ar, Br);
 					break;
 				}
@@ -580,88 +501,182 @@ int main(int argc, char* argv[])
 			} while (item != 10);
 			break;
 
-			case MENU_POLYNOMS:
+		case MENU_POLYNOMS:
 			do
 			{
-			printf ("0. %s\n", "Ввод полиномов");
-			printf ("1. %s\n", "Сложение многочленов");
-			printf ("2. %s\n", "Вычитание многочленов");
-			printf ("3. %s\n", "Умножение многочлена на рациональное число");
-			printf ("4. %s\n", "Умножение многочлена на x^k");
-			printf ("5. %s\n", "Старший коэффициент многочлена");
-			printf ("6. %s\n", "Степень многочлена");
-			printf ("7. %s\n", "Вынесение из многочлена НОК знаменателей коэффициентов\n    и НОД числителей");
-			printf ("8. %s\n", "Умножение многочленов");
-			printf ("9. %s\n", "Частное от деления многочленов");
-			printf ("10. %s\n", "Остаток от деления многочленов");
-			printf ("11. %s\n", "НОД многочленов");
-			printf ("12. %s\n", "Производная многочлена");
-			printf ("13. %s\n", "Преобразование многочлена - кратные корни в простые");
-			printf ("14. %s\n", "Возврат в меню");
-			  item = enterIntNum(1, 15);
-
-			  switch (item)
+				switch (item = menuPolynom())
 				{
-				  case 0:
-				  Ap=ENPOL();
-				  Bp=ENPOL();
-				  break;
 				case 1:
-				break;
-
+					Ap = ENPOL();
+					Bp = ENPOL();
+					break;
 				case 2:
-				break;
-
+					if (Ap.degree)
+					{
+						printf("Полином А:");
+						output_P(Ap);
+						printf("\n");
+					}
+					else
+						printf("Полином A отсутствует\n");
+					if (Bp.degree)
+					{
+						printf("Полином B:");
+						output_P(Bp);
+						printf("\n");
+					}
+					else
+						printf("Полином B отсутствует\n");
+					if (Cp.degree)
+					{
+						printf("Полином C:");
+						output_P(Cp);
+						printf("\n");
+					}
+					else
+						printf("Полином C отсутствует\n");
+					break;
 				case 3:
-				Ap = MUL_P_Q(Ap);
-				break;
+					Cp = ADD_PP_P(Ap, Bp);
+					break;
 
 				case 4:
-				ch = 0;
-				while (ch < '0' || ch > '9')
-				{
-				printf ("Введите k: ");
-				scanf ("%c", &ch);
-				if (ch < '0' || ch > '9')
-				printf ("Неверный ввод!\n");
-				}
-				Ap = MUL_Pxk_P(Ap, (int)(ch - 48));
-				break;
+					Cp = SUB_PP_P(Ap, Bp);
+					break;
 
 				case 5:
-				Cr = LED_P_Z(Ap);
-				break;
+					Cp = MUL_P_Q(Ap, Br);
+					break;
 
 				case 6:
-				printf ("Степень многочлена А: %d", DEG_P_N(Ap));
-				break;
+					ch = enterCharInterval('A', 'C', "Выберите число для умножения на x^k (A, B или C): ");
+					printf("Введите k от 0 до 9: ");
+					switch (ch)
+					{
+					case 'A':
+						Ap = MUL_Pxk_P(Ap, enterIntNumInterval(0, 9));
+						break;
+
+					case 'B':
+						Bp = MUL_Pxk_P(Bp, enterIntNumInterval(0, 9));
+						break;
+
+					case 'C':
+						Cp = MUL_Pxk_P(Cp, enterIntNumInterval(0, 9));
+						break;
+					}
+					break;
 
 				case 7:
-				break;
+					ch = enterCharInterval('A', 'C', "Выберите число для вывода старшего коэффициента (A, B или C): ");
+					switch (ch)
+					{
+					case 'A':
+						printf("Старший коэфициент многочлена А: %d", DEG_P_N(Ap));
+						break;
+
+					case 'B':
+						printf("Старший коэфициент многочлена B: %d", DEG_P_N(Cp));
+						break;
+
+					case 'C':
+						printf("Старший коэфициент многочлена C: %d", DEG_P_N(Cp));
+						break;
+					}
+					break;
 
 				case 8:
-				Cp = MUL_PP_P (Ap, Bp);
-				break;
+					ch = enterCharInterval('A', 'C', "Выберите число для вывода степени (A, B или C): ");
+					switch (ch)
+					{
+					case 'A':
+						printf("Степень многочлена А: %d", DEG_P_N(Ap));
+						break;
+
+					case 'B':
+						printf("Степень многочлена B: %d", DEG_P_N(Bp));
+						break;
+
+					case 'C':
+						printf("Степень многочлена C: %d", DEG_P_N(Cp));
+						break;
+					}
+					break;
 
 				case 9:
-				break;
+					ch = enterCharInterval('A', 'B', "Выберите число (A, B или C): ");
+					switch (ch)
+					{
+					case 'A':
+						Ap = FAC_P_PQ(Ap);
+						break;
+
+					case 'B':
+						Bp = FAC_P_PQ(Bp);
+						break;
+
+					case 'C':
+						Cp = FAC_P_PQ(Cp);
+						break;
+					}
+					break;
 
 				case 10:
-				break;
+					Cp = MUL_PP_P(Ap, Bp);
+					break;
 
 				case 11:
-				break;
+					Cp = DIV_PP_P(Ap, Bp);
+					break;
 
 				case 12:
-				break;
-
+					Cp = MOV_PP_P(Ap, Bp);
+					break;
 				case 13:
-				break;
+					Cp = GCF_PP_P(Ap, Bp);
+					break;
 
 				case 14:
-				break;
+					ch = enterCharInterval('A', 'C', "Выберите число для взятия производной (A, B или C): ");
+					switch (ch)
+					{
+					case 'A':
+						Ap = DER_P_P(Ap);
+						break;
+
+					case 'B':
+						Bp = DER_P_P(Bp);
+						break;
+
+					case 'C':
+						Cp = DER_P_P(Cp);
+						break;
+					}
+					break;
+
+				case 15:
+					ch = enterCharInterval('A', 'C', "Выберите число для преобразование многочлена — кратные корни в простые (A, B или C): ");
+					switch (ch)
+					{
+					case 'A':
+						Ap = NMR_P_P(Ap);
+						break;
+
+					case 'B':
+						Bp = NMR_P_P(Bp);
+						break;
+
+					case 'C':
+						Cp = NMR_P_P(Cp);
+						break;
+					}
+					break;
 				}
-				}while(item!=15);
+				system("pause");
+				system("cls");
+				printf("Операция успешно завершена!\n");
+				system("pause");
+			} while (item != 15);
 			break;
 		case MENU_EXIT:
 			repeat = 0;

@@ -1,6 +1,7 @@
 #ifndef POLYNOM_H
 #define POLYNOM_H
-//void menuPolynom();
+
+int menuPolynom();
 struct POLYNOMIAL ADD_PP_P(struct POLYNOMIAL first, struct POLYNOMIAL second);
 int DEG_P_N(struct POLYNOMIAL st);
 struct POLYNOMIAL DER_P_P(struct POLYNOMIAL a);
@@ -14,5 +15,6 @@ struct POLYNOMIAL MUL_PP_P(struct POLYNOMIAL A, struct POLYNOMIAL B);
 struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k);
 struct POLYNOMIAL NMR_P_P(struct POLYNOMIAL a);
 struct POLYNOMIAL SUB_PP_P(struct POLYNOMIAL first, struct POLYNOMIAL second);
+int output_P(struct POLYNOMIAL pol);
 #endif // POLYNOM_H
 

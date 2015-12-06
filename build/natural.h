@@ -1,6 +1,7 @@
 #ifndef NATURAL_H
 #define NATURAL_H
-void menuNatural();
+
+int menuNatural();
 struct NATURAL ADD_1N_N(struct NATURAL);
 struct NATURAL ADD_NN_N(struct NATURAL a, struct NATURAL b);
 int COM_NN_D(struct NATURAL one, struct NATURAL two);
@@ -16,5 +17,6 @@ int NZER_N_B(struct NATURAL num);
 struct NATURAL SUB_NDN_N(struct NATURAL a, struct NATURAL b, int c);
 struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b);
 int output_N(struct NATURAL a);
+
 #endif // NATURAL_H
 

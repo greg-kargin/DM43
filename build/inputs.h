@@ -9,7 +9,8 @@ struct NATURAL ENNAT();
 struct INTEGER ENINT();
 struct RATIONAL ENRAT();
 struct POLYNOMIAL ENPOL();
-int enterIntNum(int first, int last);
+char enterCharInterval(char first, char last, char* str);
+int enterIntNumInterval(int first, int last);
 
 #endif // INPUTS_H
 

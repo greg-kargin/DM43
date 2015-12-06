@@ -9,11 +9,11 @@ struct POLYNOMIAL GCF_PP_P(struct POLYNOMIAL A, struct POLYNOMIAL B)
    do
    {
      if ( DEG_P_N(A) >= DEG_P_N(B))
-       A = MOD_PP_P(A,B);
+       A = MOV_PP_P(A,B);
      else
-       B = MOD_PP_P(B,A);
-   } while((DEG_P_N(A) != 0 && A->factors[0].numenator != 0) || (DEG_P_N(B) ! = 0 && b->factors[0].numenator != 0));
-   if (DEG_P_N(A) != 0 || A->factors[0].numenator != 0)
+       B = MOV_PP_P(B,A);
+   } while((DEG_P_N(A) != 0 && A.factors[0].numerator.index != 0) || (DEG_P_N(B) != 0 && B.factors[0].numerator.index != 0));
+   if (DEG_P_N(A) != 0 || A.factors[0].numerator.index != 0)
      return A;
    else
      return B;
