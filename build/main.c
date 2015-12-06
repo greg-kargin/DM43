@@ -3,41 +3,6 @@
 #include <locale.h>
 #include <stdbool.h>
 #include "main.h"
-#include "conio.h"
-
-int enterNum(int first, int last)
-{
-	int num;
-	bool check_num, check_all;
-	char str[5];
-	const char numbers[] = "0123456789";
-	do
-	{
-		check_all = true;
-		check_num = false;
-		scanf("%s", &str);
-		fflush(stdin);
-		for (int i = 0; str[i] != '\0' && check_all; ++i)
-		{
-			for (int j = 0; numbers[j] != '\0' && !check_num; ++j)
-				if (str[i] == numbers[j] || str[i] == '\0')
-					check_num = true;
-			if (check_num)
-				check_num = false;
-			else
-				check_all = false;
-		}
-		if (check_all)
-			num = atoi(str);
-		else
-		{
-		printf("В строку попало что-то кроме числа, повторите ввод:\n");
-		}
-		if ((num < first || num > last) && check_all)
-			printf("Скорее всего вы ошиблись при вводе\nВведите число от %d до %d\nПовторите ввод: ", first, last);
-	} while (num < first || num > last || !check_all);
-	return num;
-}
 
 int main(int argc, char* argv[])
 {
@@ -66,7 +31,7 @@ int main(int argc, char* argv[])
 		printf("4. %s\n", "Действия с многочленами");
 		printf("5. %s\n", "Выход из программы");
 
-		_uint16 menu_item = enterNum(1,5);
+		_uint16 menu_item = enterIntNum(1,5);
 
 		system("cls");
 		int item = -1;
@@ -94,7 +59,7 @@ int main(int argc, char* argv[])
 			printf("15. %s\n", "НОД двух чисел");
 			printf("16. %s\n", "НОК двух чисел");
 			printf("17. %s\n", "Возврат в меню");
-			item = enterNum(1, 17);
+			item = enterIntNum(1, 17);
 			switch (item)
 			{
 			case 1:
@@ -202,12 +167,12 @@ int main(int argc, char* argv[])
 						printf("Неверный ввод!\n");
 				}
 				printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
-				Cn = MUL_ND_N(An, enterNum(tMin, tMax));
+				Cn = MUL_ND_N(An, enterIntNum(tMin, tMax));
 				break;
 
 			case 9:
 				printf("Введите число k (от %d, до %d) ", tMin, tMax);
-				Cn = MUL_Nk_N(An, enterNum(tMin, tMax));
+				Cn = MUL_Nk_N(An, enterIntNum(tMin, tMax));
 				break;
 
 			case 10:
@@ -216,7 +181,7 @@ int main(int argc, char* argv[])
 
 			case 11:
 				printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
-				Cn = SUB_NDN_N(An, Bn, enterNum(tMin, tMax));
+				Cn = SUB_NDN_N(An, Bn, enterIntNum(tMin, tMax));
 				break;
 
 				printf("14. %s\n", "Остаток от деления");

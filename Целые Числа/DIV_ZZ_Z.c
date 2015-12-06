@@ -13,19 +13,17 @@
 Хабаров Артем
 4306
 */
+#include "../build/main.h"
 struct INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den)
 {
 	struct INTEGER result;
-	struct NATURAL buff;
-  int i;
-
-	buff.index = num.natural_part.index;
-  for (i = 0; i < buff.index; ++i)
-    buff.number[i] = num.natural_part.number[i];
-	buff = DIV_NN_N(buff, den);
-	result.natural_part.index = buff.index;
-  for (i = 0; i < buff.index; ++i)
-    result.natural_part.number[i] = buff.number[i];
+	int i;
+	result.natural_part.index = num.natural_part.index;
+	result.natural_part.number = (int*)malloc(result.natural_part.index*sizeof(int));
+	for (i = 0; i < result.natural_part.index; ++i)
+		result.natural_part.number[i] = num.natural_part.number[i];
+	result.natural_part = DIV_NN_N(result.natural_part, den);
+	result.natural_part.index = result.natural_part.index;
 	result.sign = num.sign;
 	return result;
 }

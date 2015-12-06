@@ -9,18 +9,12 @@
 // Выполняет вычитание целых чисел
 // Станевич, Денискова - 4306
 #include "../build/main.h"
-#include "ABS_Z_N.c"
-#include "POZ_Z_D.c"
-#include "../Натуральные числа/COM_NN_D.c"
-#include "../Натуральные числа/ADD_NN_N.c"
-#include "../Натуральные числа/SUB_NN_N.c"
-#include "MUL_ZZ_Z.c"
 
 struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // result = minuend - subtrahend
   {
   struct INTEGER result;
   /* Проверить числа на равенство */
-  if (COM_NN_D(ABS_Z_N(minuend), ABS_Z_N(subtrahend)) == 0)
+  if (!COM_NN_D(minuend.natural_part, subtrahend.natural_part))
     {
     /* Числа равны по модулю */
     if (POZ_Z_D(minuend) == POZ_Z_D(subtrahend))
@@ -34,7 +28,7 @@ struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // r
     else
       {
       /* знаки разные */
-      result.natural_part = ADD_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
+      result.natural_part = ADD_NN_N(minuend.natural_part, subtrahend.natural_part);
       result.sign = minuend.sign;
       }
     }
@@ -44,13 +38,13 @@ struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // r
     if (POZ_Z_D(minuend) == POZ_Z_D(subtrahend))
       {
       /* Знаки совпадают */
-      result.natural_part = SUB_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
+      result.natural_part = SUB_NN_N(minuend.natural_part, subtrahend.natural_part);
       result.sign = POZ_Z_D(minuend);
       }
     else
       {
       /* Знаки разные */
-      result.natural_part = ADD_NN_N(ABS_Z_N(minuend), ABS_Z_N(subtrahend));
+      result.natural_part = ADD_NN_N(minuend.natural_part, subtrahend.natural_part);
       result.sign = POZ_Z_D(minuend);
       }
     }

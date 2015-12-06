@@ -1,4 +1,5 @@
 #include "main.h"
+#include "stdio.h"
 struct NATURAL ENNAT()
   {
   struct NATURAL input;
@@ -34,9 +35,49 @@ struct NATURAL ENNAT()
       }
     }
     while (ch != '\n');*/
+  /*
+  printf("Введите количество цифр в числе от 1 до 30");
+  input.index=enterIntNum(1,30);
+  for(int i=0; i<input.index; ++i)
+	input.number[i]=getchar()-48;
+  */
 	  input.index = 5;
 	  input.number = (int*)malloc(input.index*sizeof(int));
 	  for (int i = 0; i < input.index; ++i)
 		  input.number[i] = i+1;
     return input;
   }
+
+int enterIntNum(int first, int last)
+{
+	int num;
+	short int check_num, check_all;
+	char str[5];
+	const char numbers[] = "0123456789";
+	do
+	{
+		check_all = 1;
+		check_num = 0;
+		scanf_s("%s", &str);
+		fflush(stdin);
+		for (int i = 0; str[i] != '\0' && check_all; ++i)
+		{
+			for (int j = 0; numbers[j] != '\0' && !check_num; ++j)
+				if (str[i] == numbers[j] || str[i] == '\0')
+					check_num = 1;
+			if (check_num)
+				check_num = 0;
+			else
+				check_all = 0;
+		}
+		if (check_all)
+			num = atoi(str);
+		else
+		{
+			printf("В строку попало что-то кроме числа, повторите ввод:\n");
+		}
+		if ((num < first || num > last) && check_all)
+			printf("Скорее всего вы ошиблись при вводе\nВведите число от %d до %d\nПовторите ввод: ", first, last);
+	} while (num < first || num > last || !check_all);
+	return num;
+}

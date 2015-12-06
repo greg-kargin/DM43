@@ -16,13 +16,12 @@ SUB_Z_Z
 Мясоедова Елизавета
 4306
 */
-
+#include "../build/main.h"
 struct INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b)
 {
-  struct INTEGER result, c, d;
+  struct INTEGER c, d;
   c=DIV_ZZ_Z(a, b);
   d=TRANS_N_Z(b);
   c=MUL_ZZ_Z(c, d);
-  result=SUB_Z_Z(a, c);
-  return result;
+  return SUB_ZZ_Z(a, c);
 }
