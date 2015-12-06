@@ -580,7 +580,7 @@ int main(int argc, char* argv[])
 			} while (item != 10);
 			break;
 
-			/*case MENU_POLYNOMS:
+			case MENU_POLYNOMS:
 			do
 			{
 			printf ("0. %s\n", "Ввод полиномов");
@@ -663,7 +663,6 @@ int main(int argc, char* argv[])
 				}
 				}while(item!=15);
 			break;
-			*/
 		case MENU_EXIT:
 			repeat = 0;
 			break;

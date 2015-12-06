@@ -66,6 +66,16 @@ struct RATIONAL ENRAT()
 	return input;
 }
 
+struct POLYNOMIAL ENPOL()
+{
+	struct POLYNOMIAL input;
+	input.degree = 5;
+	input.factors = (struct RATIONAL*)malloc(input.degree*sizeof(struct RATIONAL));
+	for (int i = 0; i < input.degree; ++i)
+		input.factors[i] = ENRAT();
+	return input;
+}
+
 int enterIntNum(int first, int last)
 {
 	int num;

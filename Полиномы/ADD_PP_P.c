@@ -1,5 +1,9 @@
-POLYNOMIAL ADD_PP_P(POLYNOMIAL first, POLYNOMIAL second, POLYNOMIAL rezult)
+//Сложение многочленов
+#include "../build/main.h"
+
+struct POLYNOMIAL ADD_PP_P(struct POLYNOMIAL first, struct POLYNOMIAL second)
 {
+	struct POLYNOMIAL result;
 	rezult.factors = NULL;
 	int mem = 0;
 	if (first.degree >= second.degree)

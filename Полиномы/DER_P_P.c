@@ -1,3 +1,5 @@
+//Производная многочлена
+#include "../build/main.h"
 struct POLYNOMIAL DER_P_P(struct POLYNOMIAL a)
 {
 	struct POLYNOMIAL res;

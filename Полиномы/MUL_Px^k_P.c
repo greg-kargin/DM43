@@ -1,4 +1,10 @@
-
+/*Подключаемых модулей нет
+int* MUL_Pxk_P(int* ,int* ,int ) - прототип
+int* - указатель на старшую степень исходного многочлена
+int* - указатель на массив коэффициентов исходного многочлена
+int - cтепень X^K
+Выполнили: Кановский, Веденин 4306*/
+#include "../build/main.h"
 struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k)
   {
   struct POLYNOMIAL result;
@@ -15,9 +21,3 @@ struct POLYNOMIAL MUL_Pxk_P(struct POLYNOMIAL polynom, int k)
   return polynom;
   }
       
-/*Подключаемых модулей нет
-  int* MUL_Pxk_P(int* ,int* ,int ) - прототип
-  int* - указатель на старшую степень исходного многочлена
-  int* - указатель на массив коэффициентов исходного многочлена    
-  int - cтепень X^K
-  Выполнили: Кановский, Веденин 4306*/

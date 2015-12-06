@@ -1,6 +1,5 @@
 #ifndef RATIONAL_H
 #define RATIONAL_H
-#include "../build/main.h"
 
 //void menuRational();
 struct RATIONAL ADD_QQ_Q(struct RATIONAL number1, struct RATIONAL number2);

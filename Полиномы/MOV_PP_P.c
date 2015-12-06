@@ -4,11 +4,9 @@
 // 2. SUB_PP_P -- вычитание многочленов
 // 3. MUL_PP_P -- перемножение многочленов
 
-#include "DIV_PP_P.c"
-#include "SUB_PP_P.c"
-#include "MUL_PP_P.c"
+#include "../build/main.h"
 
-POLYNOMIAL MOV_PP_P(POLYNOMINAL *A, POLYNOMINAL *B)
+struct POLYNOMIAL MOV_PP_P(struct POLYNOMIAL A, struct POLYNOMIAL B)
 {
-  return(SUB_PP_P(A, MUL_PP_P(B, DIV_PP_P(A, B))));
+  return (SUB_PP_P(A, MUL_PP_P(B, DIV_PP_P(A, B))));
 }

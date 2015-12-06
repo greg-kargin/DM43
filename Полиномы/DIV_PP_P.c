@@ -8,6 +8,7 @@
 // SUB_QQ_Q - Вычитание дробей
 
 // гр. 4305, Аллаяров, Хабиров
+#include "../build/main.h"
 
 struct POLYNOMIAL DIV_PP_P(struct POLYNOMIAL a, struct POLYNOMIAL b)
 {
