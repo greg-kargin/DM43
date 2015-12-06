@@ -48,6 +48,15 @@ struct NATURAL ENNAT()
     return input;
   }
 
+struct INTEGER ENINT()
+{
+	struct INTEGER input;
+	printf("Введите знак числа 0 знак '+', 1 знак '-'");
+	input.sign = enterIntNum(1, 30);
+	input.natural_part = ENNAT();
+	return input;
+}
+
 int enterIntNum(int first, int last)
 {
 	int num;

@@ -6,6 +6,7 @@
 #include "stdlib.h"
 
 struct NATURAL ENNAT();
+struct INTEGER ENINT();
 int enterIntNum(int first, int last);
 
 #endif // INPUTS_H
