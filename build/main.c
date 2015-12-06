@@ -3,10 +3,45 @@
 #include <locale.h>
 #include <stdbool.h>
 #include "main.h"
+#include "conio.h"
 
+int enterNum(int first, int last)
+{
+	int num;
+	bool check_num, check_all;
+	char str[5];
+	const char numbers[] = "0123456789";
+	do
+	{
+		check_all = true;
+		check_num = false;
+		scanf("%s", &str);
+		fflush(stdin);
+		for (int i = 0; str[i] != '\0' && check_all; ++i)
+		{
+			for (int j = 0; numbers[j] != '\0' && !check_num; ++j)
+				if (str[i] == numbers[j] || str[i] == '\0')
+					check_num = true;
+			if (check_num)
+				check_num = false;
+			else
+				check_all = false;
+		}
+		if (check_all)
+			num = atoi(str);
+		else
+		{
+		printf("В строку попало что-то кроме числа, повторите ввод:\n");
+		}
+		if ((num < first || num > last) && check_all)
+			printf("Скорее всего вы ошиблись при вводе\nВведите число от %d до %d\nПовторите ввод: ", first, last);
+	} while (num < first || num > last || !check_all);
+	return num;
+}
 
 int main(int argc, char* argv[])
 {
+	int tMin=0, tMax=150;
 	setlocale(LC_ALL, "RUS");
 	struct NATURAL An, Bn, Cn;
 	An.index = 0;
@@ -31,16 +66,7 @@ int main(int argc, char* argv[])
 		printf("4. %s\n", "Действия с многочленами");
 		printf("5. %s\n", "Выход из программы");
 
-		_uint16 menu_item = 0;
-		while ((menu_item < 1) || (menu_item > MENU_EXIT))
-		{
-			printf("%s", "Выберите пункт меню: ");
-			fflush(stdin);
-			scanf("%hd", &menu_item);
-
-			if ((menu_item < 1) || (menu_item > MENU_EXIT))
-				printf("%s\n", "Неверный ввод!");
-		}
+		_uint16 menu_item = enterNum(1,5);
 
 		system("cls");
 		int item = -1;
@@ -50,46 +76,40 @@ int main(int argc, char* argv[])
 		case MENU_NATURAL:
 			do
 			{ 
-				system("cls");
-			printf("0. %s\n", "Ввод натуральных чисел");
-			printf("1. %s\n", "Вывод натуральных чисел");
-			printf("2. %s\n", "Сравнение чисел");
-			printf("3. %s\n", "Проверка на равенство нулю");
-			printf("4. %s\n", "Добавление единицы");
-			printf("5. %s\n", "Сложение");
-			printf("6. %s\n", "Вычитание");
-			printf("7. %s\n", "Умножение на цифру");
-			printf("8. %s\n", "Умножение на 10 в степени k");
-			printf("9. %s\n", "Умножение чисел");
-			printf("10. %s\n", "Вычитание числа, умноженного на цифру");
-			printf("11. %s\n", "Вычисления первой цифры деления большего\n\    натурального на меньшее, домноженное на 10^k");
-			printf("12. %s\n", "Частное от деления");
-			printf("13. %s\n", "Остаток от деления");
-			printf("14. %s\n", "НОД двух чисел");
-			printf("15. %s\n", "НОК двух чисел");
-			item = -1;
-			while (item < 0 || item > 15)
-			{
-				printf("16. %s\n", "Возврат в меню");
-				fflush(stdin);
-				scanf("%d", &item);
-				if (item < 0 || item > 16)
-					printf("Неверный ввод!\n");
-			}
-
+			system("cls");
+			printf("1. %s\n", "Ввод натуральных чисел");
+			printf("2. %s\n", "Вывод натуральных чисел");
+			printf("3. %s\n", "Сравнение чисел");
+			printf("4. %s\n", "Проверка на равенство нулю");
+			printf("5. %s\n", "Добавление единицы");
+			printf("6. %s\n", "Сложение");
+			printf("7. %s\n", "Вычитание");
+			printf("8. %s\n", "Умножение на цифру");
+			printf("9. %s\n", "Умножение на 10 в степени k");
+			printf("10. %s\n", "Умножение чисел");
+			printf("11. %s\n", "Вычитание числа, умноженного на цифру");
+			printf("12. %s\n", "Вычисления первой цифры деления большего\n    натурального на меньшее, домноженное на 10^k");
+			printf("13. %s\n", "Частное от деления");
+			printf("14. %s\n", "Остаток от деления");
+			printf("15. %s\n", "НОД двух чисел");
+			printf("16. %s\n", "НОК двух чисел");
+			printf("17. %s\n", "Возврат в меню");
+			item = enterNum(1, 17);
 			switch (item)
 			{
-			case 0:
-				printf("Введите натуральное число A (>0):\n");
+			case 1:
+				printf("Введите натуральное число A (>0):");
 				An = ENNAT();
 				printf("Введите натуральное число B (>0):");
 				Bn = ENNAT();
 				break;
-			case 1:
+
+			case 2:
 				if (An.index > 0)
 				{
 					printf("Число А:");
 					output_N(An);
+					printf("\n");
 				}
 				else
 					printf("Натуральное число A отсутствует\n");
@@ -97,6 +117,7 @@ int main(int argc, char* argv[])
 				{
 					printf("Число B:");
 					output_N(An);
+					printf("\n");
 				}
 				else
 					printf("Натуральное число B отсутствует\n");
@@ -104,16 +125,24 @@ int main(int argc, char* argv[])
 				{
 					printf("Число C:");
 					output_N(An);
+					printf("\n");
 				}
 				else
 					printf("Натуральное число C отсутствует\n");
-				system("pause");
 				break;
 
-			case 2:
-
-				break;
 			case 3:
+				if (COM_NN_D(An, Bn) == 2)
+					printf("Число A больше числа B(A>B)");
+				else
+					if (COM_NN_D(An, Bn) == 1)
+						printf("Число B больше числа A(B>A)");
+					else
+						printf("Число A равно числу B (A=B)");
+				printf("\n");
+				break;
+
+			case 4:
 				ch = 0;
 				while (ch < 'A' || ch > 'C')
 				{
@@ -137,45 +166,85 @@ int main(int argc, char* argv[])
 					break;
 				}
 				break;
-			case 4:
-				break;
 
 			case 5:
+				ch = 0;
+				while (ch < 'A' || ch > 'C')
+				{
+					printf("Выберите число для добавления единицы (A, B или C): ");
+					scanf("%c", &ch);
+					if (ch < 'A' || ch > 'C')
+						printf("Неверный ввод!\n");
+				}
+				if (ch = 'A')
+					An = ADD_1N_N(An);
+				else
+					if (ch = 'B')
+						Bn = ADD_1N_N(Bn);
+					else
+						Cn = ADD_1N_N(Cn);
 				break;
 
 			case 6:
+				Cn = ADD_NN_N(An, Bn);
 				break;
 
 			case 7:
+				Cn = SUB_NN_N(An, Bn);
 				break;
 
 			case 8:
-				Cn = MUL_NN_N(An, Bn);
+				while (ch < 'A' || ch > 'C')
+				{
+					printf("Выберите число для умножения (A, B или C): ");
+					scanf("%c", &ch);
+					if (ch < 'A' || ch > 'C')
+						printf("Неверный ввод!\n");
+				}
+				printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
+				Cn = MUL_ND_N(An, enterNum(tMin, tMax));
 				break;
 
 			case 9:
+				printf("Введите число k (от %d, до %d) ", tMin, tMax);
+				Cn = MUL_Nk_N(An, enterNum(tMin, tMax));
 				break;
 
 			case 10:
+				Cn = MUL_NN_N(An, Bn);
 				break;
 
 			case 11:
+				printf("Введите число на которое надо умножить (от %d, до %d) ", tMin, tMax);
+				Cn = SUB_NDN_N(An, Bn, enterNum(tMin, tMax));
 				break;
 
+				printf("14. %s\n", "Остаток от деления");
 			case 12:
+				Cn = DIV_NN_Dk(An, Bn);
 				break;
 
 			case 13:
+				Cn = DIV_NN_N(An, Bn);
 				break;
 
 			case 14:
-				Cn = LCM_NN_N(An, Bn);
+				Cn = MOD_NN_N(An, Bn);
 				break;
 
 			case 15:
+				Cn = GCF_NN_N(An, Bn);
+				break;
+				
+			case 16:
+				Cn = LCM_NN_N(An, Bn);
 				break;
 			}
-			}while (item != 16);
+			system("pause");
+			system("cls");
+			printf("Операция успешно завершена!\n");
+			system("pause");
+			}while (item != 17);
 			break;
 			/*
 			case MENU_INTEGER:
