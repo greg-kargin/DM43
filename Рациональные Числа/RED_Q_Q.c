@@ -24,7 +24,7 @@ a - дробь
 группа 4306
 */
 #include "../build/main.h"
-struct RATIONAL RED_QQ_Q (struct RATIONAL a)
+struct RATIONAL RED_Q_Q (struct RATIONAL a)
   {
     struct RATIONAL b; //Возвращаемая дробь
   	struct NATURAL NOD = GCF_NN_N(a.numerator,a.denominator); //НОД числителя и знаменателя

@@ -361,7 +361,7 @@ int main(int argc, char* argv[])
 					switch (ch)
 					{
 					case 'A':
-						Ai=TRANS_N_Z(An);
+						Ai = TRANS_N_Z(An);
 						break;
 
 					case 'B':
@@ -419,93 +419,186 @@ int main(int argc, char* argv[])
 					Ci = MOD_ZZ_Z(Ai, Bi.natural_part);
 					break;
 				}
+				system("pause");
+				system("cls");
+				printf("Операция успешно завершена!\n");
+				system("pause");
 			} while (item != 12);
 			break;
 
-			/*case MENU_RATIONAL:
-			printf ("0. %s\n", "Р’РІРѕРґ СЂР°С†РёРѕРЅР°Р»СЊРЅС‹С… С‡РёСЃРµР»");
-			  printf ("1. %s\n", "РЎРѕРєСЂР°С‰РµРЅРёРµ РґСЂРѕР±Рё");
-			  printf ("2. %s\n", "РџСЂРѕРІРµСЂРєР° РЅР° С†РµР»РѕРµ");
-			  printf ("3. %s\n", "РџСЂРµРѕРѕР±СЂР°Р·РѕРІР°РЅРёРµ С†РµР»РѕРіРѕ РІ РґСЂРѕР±РЅРѕРµ");
-			  printf ("4. %s\n", "РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РґСЂРѕР±РЅРѕРіРѕ РІ С†РµР»РѕРµ");
-			  printf ("5. %s\n", "РЎР»РѕР¶РµРЅРёРµ");
-			  printf ("6. %s\n", "Р’С‹С‡РёС‚Р°РЅРёРµ");
-			  printf ("7. %s\n", "РЈРјРЅРѕР¶РµРЅРёРµ");
-			  printf ("8. %s\n", "Р”РµР»РµРЅРёРµ");
-			  printf ("9. %s\n", "Р’РѕР·РІСЂР°С‚ РІ РјРµРЅСЋ");
-			  item = -1;
-			  while (item < 0 || item > 15)
-				{
-				printf ("15. %s\n", "Р’РѕР·РІСЂР°С‚ РІ РјРµРЅСЋ");
-				fflush(stdin);
-				scanf ("%d", &item);
-				if (item < 0 || item > 15)
-				  printf("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ!\n");
-				}
+		case MENU_RATIONAL:
+			do
+			{
+				printf("1. %s\n", "Ввод рациональных чисел");
+				printf("2. %s\n", "Сокращение дроби");
+				printf("3. %s\n", "Проверка на целое");
+				printf("4. %s\n", "Преообразование целого в дробное");
+				printf("5. %s\n", "Преобразование дробного в целое");
+				printf("6. %s\n", "Сложение");
+				printf("7. %s\n", "Вычитание");
+				printf("8. %s\n", "Умножение");
+				printf("9. %s\n", "Деление");
+				printf("10. %s\n", "Возврат в меню");
+				item = enterIntNum(1, 10);
 
-			  switch (item)
+				switch (item)
 				{
-				  case 0:
-				  Ar=ENRAT();
-				  Br=ENRAT();
-				  break;
 				case 1:
-				Ar = RED_Q_Q(Ar);
-				break;
+					Ar = ENRAT();
+					Br = ENRAT();
+					break;
 
 				case 2:
-				break;
+					ch = 0;
+					while (ch < 'A' || ch > 'C')
+					{
+						printf("Выберите число для сокращения (A, B или C): ");
+						scanf("%c", &ch);
+						if (ch < 'A' || ch > 'C')
+							printf("Неверный ввод!\n");
+					}
+					switch (ch)
+					{
+					case 'A':
+						Ar = RED_Q_Q(Ar);
+						break;
+
+					case 'B':
+						Br = RED_Q_Q(Br);
+						break;
+
+					case 'C':
+						Cr = RED_Q_Q(Cr);
+						break;
+					}
+					break;
 
 				case 3:
-				break;
+					ch = 0;
+					while (ch < 'A' || ch > 'C')
+					{
+						printf("Выберите число для проверки на целое (A, B или C): ");
+						scanf("%c", &ch);
+						if (ch < 'A' || ch > 'C')
+							printf("Неверный ввод!\n");
+					}
+					switch (ch)
+					{
+					case 'A':
+						if (INT_Q_Z(Ar))
+							printf("Число А целое");
+						else
+							printf("Число A дробное");
+						break;
+
+					case 'B':
+						if (INT_Q_Z(Br))
+							printf("Число B целое");
+						else
+							printf("Число B дробное");
+						break;
+
+					case 'C':
+						if (INT_Q_Z(Cr))
+							printf("Число C целое");
+						else
+							printf("Число C дробное");
+						break;
+					}
+					break;
 
 				case 4:
-				break;
+					ch = 0;
+					while (ch < 'A' || ch > 'C')
+					{
+						printf("Выберите число для проверки на целое (A, B или C): ");
+						scanf("%c", &ch);
+						if (ch < 'A' || ch > 'C')
+							printf("Неверный ввод!\n");
+					}
+					switch (ch)
+					{
+					case 'A':
+						Ar=TRAN_Z_Q(Ai);
+						break;
+
+					case 'B':
+						Br = TRAN_Z_Q(Bi);
+						break;
+
+					case 'C':
+						Cr = TRAN_Z_Q(Ci);
+						break;
+					}
+					break;
 
 				case 5:
-				break;
+					ch = 0;
+					while (ch < 'A' || ch > 'C')
+					{
+						printf("Выберите число для проверки на целое (A, B или C): ");
+						scanf("%c", &ch);
+						if (ch < 'A' || ch > 'C')
+							printf("Неверный ввод!\n");
+					}
+					switch (ch)
+					{
+					case 'A':
+						Ai = TRAN_Q_Z(Ar);
+						break;
+
+					case 'B':
+						Bi = TRAN_Q_Z(Br);
+						break;
+
+					case 'C':
+						Ci = TRAN_Q_Z(Cr);
+						break;
+					}
+					break;
 
 				case 6:
-				break;
+					Cr = ADD_QQ_Q(Ar, Br);
+					break;
 
 				case 7:
-				Cr = MUL_QQ_Q(Ar, Br);
-				break;
+					Cr = SUB_QQ_Q(Ar, Br);
+					break;
 
 				case 8:
-				Cr = DIV_QQ_Q(Ar, Br);
-				break;
+					Cr = MUL_QQ_Q(Ar, Br);
+					break;
 
 				case 9:
-				break;
+					Cr = DIV_QQ_Q(Ar, Br);
+					break;
 				}
+				system("pause");
+				system("cls");
+				printf("Операция успешно завершена!\n");
+				system("pause");
+			} while (item != 10);
 			break;
 
-			case MENU_POLYNOMS:
-			printf ("0. %s\n", "Р’РІРѕРґ РїРѕР»РёРЅРѕРјРѕРІ");
-			  printf ("1. %s\n", "РЎР»РѕР¶РµРЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("2. %s\n", "Р’С‹С‡РёС‚Р°РЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("3. %s\n", "РЈРјРЅРѕР¶РµРЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅР° РЅР° СЂР°С†РёРѕРЅР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ");
-			  printf ("4. %s\n", "РЈРјРЅРѕР¶РµРЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅР° РЅР° x^k");
-			  printf ("5. %s\n", "РЎС‚Р°СЂС€РёР№ РєРѕСЌС„С„РёС†РёРµРЅС‚ РјРЅРѕРіРѕС‡Р»РµРЅР°");
-			  printf ("6. %s\n", "РЎС‚РµРїРµРЅСЊ РјРЅРѕРіРѕС‡Р»РµРЅР°");
-			  printf ("7. %s\n", "Р’С‹РЅРµСЃРµРЅРёРµ РёР· РјРЅРѕРіРѕС‡Р»РµРЅР° РќРћРљ Р·РЅР°РјРµРЅР°С‚РµР»РµР№ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ \
-								  Рё РќРћР” С‡РёСЃР»РёС‚РµР»РµР№");
-			  printf ("8. %s\n", "РЈРјРЅРѕР¶РµРЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("9. %s\n", "Р§Р°СЃС‚РЅРѕРµ РѕС‚ РґРµР»РµРЅРёСЏ РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("10. %s\n", "РћСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("11. %s\n", "РќРћР” РјРЅРѕРіРѕС‡Р»РµРЅРѕРІ");
-			  printf ("12. %s\n", "РџСЂРѕРёР·РІРѕРґРЅР°СЏ РјРЅРѕРіРѕС‡Р»РµРЅР°");
-			  printf ("13. %s\n", "РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РјРЅРѕРіРѕС‡Р»РµРЅР° - РєСЂР°С‚РЅС‹Рµ РєРѕСЂРЅРё РІ РїСЂРѕСЃС‚С‹Рµ");
-			  printf ("14. %s\n", "Р’РѕР·РІСЂР°С‚ РІ РјРµРЅСЋ");
-			  item = -1;
-			  while (item < 0 || item > 15)
-				{
-				printf ("15. %s\n", "Р’РѕР·РІСЂР°С‚ РІ РјРµРЅСЋ");
-				scanf ("%d", &item);
-				if (item < 0 || item > 15)
-				  printf ("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ!\n")
-				}
+			/*case MENU_POLYNOMS:
+			do
+			{
+			printf ("0. %s\n", "Ввод полиномов");
+			printf ("1. %s\n", "Сложение многочленов");
+			printf ("2. %s\n", "Вычитание многочленов");
+			printf ("3. %s\n", "Умножение многочлена на рациональное число");
+			printf ("4. %s\n", "Умножение многочлена на x^k");
+			printf ("5. %s\n", "Старший коэффициент многочлена");
+			printf ("6. %s\n", "Степень многочлена");
+			printf ("7. %s\n", "Вынесение из многочлена НОК знаменателей коэффициентов\n    и НОД числителей");
+			printf ("8. %s\n", "Умножение многочленов");
+			printf ("9. %s\n", "Частное от деления многочленов");
+			printf ("10. %s\n", "Остаток от деления многочленов");
+			printf ("11. %s\n", "НОД многочленов");
+			printf ("12. %s\n", "Производная многочлена");
+			printf ("13. %s\n", "Преобразование многочлена - кратные корни в простые");
+			printf ("14. %s\n", "Возврат в меню");
+			  item = enterIntNum(1, 15);
 
 			  switch (item)
 				{
@@ -526,12 +619,12 @@ int main(int argc, char* argv[])
 				case 4:
 				ch = 0;
 				while (ch < '0' || ch > '9')
-				  {
-				  printf ("Р’РІРµРґРёС‚Рµ k: ");
-				  scanf ("%c", &ch);
-				  if (ch < '0' || ch > '9')
-					printf ("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ!\n");
-				  }
+				{
+				printf ("Введите k: ");
+				scanf ("%c", &ch);
+				if (ch < '0' || ch > '9')
+				printf ("Неверный ввод!\n");
+				}
 				Ap = MUL_Pxk_P(Ap, (int)(ch - 48));
 				break;
 
@@ -540,7 +633,7 @@ int main(int argc, char* argv[])
 				break;
 
 				case 6:
-				printf ("РЎС‚РµРїРµРЅСЊ РјРЅРѕРіРѕС‡Р»РµРЅР° Рђ: %d", DEG_P_N(Ap));
+				printf ("Степень многочлена А: %d", DEG_P_N(Ap));
 				break;
 
 				case 7:
@@ -568,6 +661,7 @@ int main(int argc, char* argv[])
 				case 14:
 				break;
 				}
+				}while(item!=15);
 			break;
 			*/
 		case MENU_EXIT:

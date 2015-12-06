@@ -1,5 +1,4 @@
 #include "main.h"
-#include "stdio.h"
 struct NATURAL ENNAT()
   {
   struct NATURAL input;
@@ -52,8 +51,18 @@ struct INTEGER ENINT()
 {
 	struct INTEGER input;
 	printf("Введите знак числа 0 знак '+', 1 знак '-'");
-	input.sign = enterIntNum(1, 30);
+	input.sign = enterIntNum(0, 1);
 	input.natural_part = ENNAT();
+	return input;
+}
+
+struct RATIONAL ENRAT()
+{
+	struct RATIONAL input;
+	printf("Введите знак числа 0 знак '+', 1 знак '-'");
+	input.sign = enterIntNum(0, 1);
+	input.numerator = ENNAT();
+	input.denominator = ENNAT();
 	return input;
 }
 

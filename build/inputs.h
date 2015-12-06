@@ -7,6 +7,7 @@
 
 struct NATURAL ENNAT();
 struct INTEGER ENINT();
+struct RATIONAL ENRAT();
 int enterIntNum(int first, int last);
 
 #endif // INPUTS_H
