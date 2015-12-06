@@ -7,7 +7,8 @@
 Рогачева Екатерина
 группа 4305
 */
-struct RATIONAL SUB_QQ_Q(RATIONAL number1, RATIONAL number2)
+#include "../build/main.h"
+struct RATIONAL SUB_QQ_Q(struct RATIONAL number1, struct RATIONAL number2)
   {
   //Вычитание из number1 number2
 
@@ -16,8 +17,8 @@ struct RATIONAL SUB_QQ_Q(RATIONAL number1, RATIONAL number2)
   struct RATIONAL result;
 
   //Выделение памяти
-  result.numerator = calloc((((COM_NN_D(number1.numerator, number2.numerator)) ? number1.numerator : number2.numerator).index)*sizeof(int));
-  result.denominator = calloc(sizeof(number1.denominator.index + number2.denominator.index)*sizeof(int));
+  //result.numerator = calloc((((COM_NN_D(number1.numerator, number2.numerator)) ? number1.numerator : number2.numerator).index)*sizeof(int));
+  //result.denominator = calloc(sizeof(number1.denominator.index + number2.denominator.index)*sizeof(int));
   result.sign = 0;
 
   if (!(NZER_N_B(number1.denominator)) || !(NZER_N_B(number2.denominator)))
@@ -37,7 +38,7 @@ struct RATIONAL SUB_QQ_Q(RATIONAL number1, RATIONAL number2)
       { // Если дроби одного знака
       result.numerator = SUB_NN_N(number1.numerator, number2.numerator);
       result.denominator = NOK;
-      if (!COM_NN_D(number1.numerator, number2.numerator))
+      /*if (!COM_NN_D(number1.numerator, number2.numerator))
         { //Число1 > Число2
         if (!number2.sign)//знак положителен
           result.sign = 0;
@@ -50,7 +51,7 @@ struct RATIONAL SUB_QQ_Q(RATIONAL number1, RATIONAL number2)
         result.sign = 0;
         }
       else //Если дроби разных знаков
-        result.numerator = ADD_QQ_Q(number1.numerator, number2.numerator);
+        result.numerator = ADD_QQ_Q(number1.numerator, number2.numerator);*/
       result.denominator = NOK;
       if (number1.sign)
         result.sign = 0;

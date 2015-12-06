@@ -23,13 +23,13 @@ a - дробь
 Мезенцев Павел
 группа 4306
 */
-
+#include "../build/main.h"
 struct RATIONAL RED_QQ_Q (struct RATIONAL a)
   {
     struct RATIONAL b; //Возвращаемая дробь
-  	struct NATURAL NOD=GCF_NN_N(a.numerator,a.denominator); //НОД числителя и знаменателя
-  	b.numerator=DIV_ZZ_Z(a.numerator,NOD);
-  	b.denominator=DIV_ZZ_Z(a.denominator,NOD);
+  	struct NATURAL NOD = GCF_NN_N(a.numerator,a.denominator); //НОД числителя и знаменателя
+  	b.numerator=DIV_NN_N(a.numerator, NOD);
+  	b.denominator=DIV_NN_N(a.denominator, NOD);
   	b.sign=a.sign;
   	return b;
   }

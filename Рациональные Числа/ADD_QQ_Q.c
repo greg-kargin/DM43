@@ -1,16 +1,17 @@
 //  ADD_QQ_Q
 //  01.05.15.
 //  Сложение дробей
-
-struct RATIONAL ADD_QQ_Q(RATIONAL number1,RATIONAL number2){
+#include "../build/main.h"
+struct RATIONAL ADD_QQ_Q(struct RATIONAL number1, struct RATIONAL number2)
+{
   
   struct NATURAL NOK; //Наименьшее общее кратное
   struct NATURAL factor1,factor2; //Множители
-  struct NATURAL sum;
+  struct RATIONAL sum;
   
   //Выделение памяти
-  sum.numerator.number = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
-  sum.denominator.number = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
+  //sum.numerator.number = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
+  //sum.denominator.number = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
   sum.sign = 0;
   
   if(!(NZER_N_B(number1.denominator))||!(NZER_N_B(number2.denominator)))
