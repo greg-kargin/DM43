@@ -1,13 +1,12 @@
 #include "../build/main.h"
 int output_Q(struct RATIONAL a)
 {
-	printf("Числитель:\n");
+	//printf("Числитель:\n");
 	if (a.sign)
 		printf("-");
-	for (int i = 0; i < a.numerator.index; ++i)
-		printf("%d", a.numerator.number[i]);
-	printf("Знаменатель:\n");
-	for (int i = 0; i < a.denominator.index; ++i)
-		printf("%d", a.denominator.number[i]);
+	output_N(a.numerator);
+	printf('/');
+	//printf("Знаменатель:\n");
+	output_N(a.denominator);
 	return 0;
 }
