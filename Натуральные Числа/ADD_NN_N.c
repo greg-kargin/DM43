@@ -5,13 +5,13 @@
 // Выполняет сложение натуральных чисел
 #include "../build/main.h"
 
-struct NATURAL ADD_NN_N(struct NATURAL a, struct NATURAL b)
+struct NATURAL ADD_NN_N(struct NATURAL A, struct NATURAL B)
 {
-	int min = (COM_NN_D(a, b)==2) ? b.index : a.index;
+	int min = (COM_NN_D(A, B)==2) ? B.index : A.index;
 	int i; // flag - проверка на успешность выполнения операции
 	struct NATURAL *t, *tm;
-	t = (COM_NN_D(a, b)==2) ? &a : &b;
-	tm = (t == &a) ? &b : &a;
+	t = (COM_NN_D(A, B)==2) ? &A : &B;
+	tm = (t == &A) ? &B : &A;
 	for (i = 0; i < min; i++)
 	{
 		if (((*t).number[i] + (*tm).number[i]) > 9) // проверка, нужно ли делать перенос

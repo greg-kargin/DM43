@@ -1,7 +1,7 @@
 #include "../build/main.h"
-int output_N(struct NATURAL a)
+int output_N(struct NATURAL A)
 {
-	for (int i = a.index-1; i >= 0; --i)
-		printf("%d", a.number[i]);
+	for (int i = A.index-1; i >= 0; --i)
+		printf("%d", A.number[i]);
 	return 0;
 }

@@ -1,22 +1,23 @@
 #ifndef NATURAL_H
 #define NATURAL_H
 
-int menuNatural();
-struct NATURAL ADD_1N_N(struct NATURAL);
-struct NATURAL ADD_NN_N(struct NATURAL a, struct NATURAL b);
-int COM_NN_D(struct NATURAL one, struct NATURAL two);
+int menuItemNatural();
+int menuNatural(struct NATURAL* nats);
+struct NATURAL ADD_1N_N(struct NATURAL A);
+struct NATURAL ADD_NN_N(struct NATURAL A, struct NATURAL B);
+int COM_NN_D(struct NATURAL A, struct NATURAL B);
 struct NATURAL DIV_NN_Dk(struct NATURAL A, struct NATURAL B);
-struct NATURAL DIV_NN_N(struct NATURAL a, struct NATURAL b);
+struct NATURAL DIV_NN_N(struct NATURAL A, struct NATURAL B);
 struct NATURAL GCF_NN_N(struct NATURAL A, struct NATURAL B);
-struct NATURAL LCM_NN_N(struct NATURAL a, struct NATURAL b);
-struct NATURAL MOD_NN_N(struct NATURAL delimoe, struct NATURAL delitel);
-struct NATURAL MUL_ND_N(struct NATURAL a, int k);
+struct NATURAL LCM_NN_N(struct NATURAL A, struct NATURAL B);
+struct NATURAL MOD_NN_N(struct NATURAL A, struct NATURAL B);
+struct NATURAL MUL_ND_N(struct NATURAL A, int k);
 struct NATURAL MUL_Nk_N(struct NATURAL A, int k);
-struct NATURAL MUL_NN_N(struct NATURAL E, struct NATURAL B);
-int NZER_N_B(struct NATURAL num);
-struct NATURAL SUB_NDN_N(struct NATURAL a, struct NATURAL b, int c);
-struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b);
-int output_N(struct NATURAL a);
+struct NATURAL MUL_NN_N(struct NATURAL A, struct NATURAL B);
+int NZER_N_B(struct NATURAL A);
+struct NATURAL SUB_NDN_N(struct NATURAL A, struct NATURAL B, int k);
+struct NATURAL SUB_NN_N(struct NATURAL A, struct NATURAL B);
+int output_N(struct NATURAL A);
 
 #endif // NATURAL_H
 

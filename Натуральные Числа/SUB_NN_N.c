@@ -3,7 +3,7 @@
 COM_NN_D //сравнение натуральных чисел
 
 Описание переменных:
-a, b - введенные числа
+A, B - введенные числа
 rec - результат вычитания
 
 Описание значения, возвращаемого функцией:
@@ -16,13 +16,13 @@ rec - результат вычитания
 */
 #include "../build/main.h"
 
-struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
+struct NATURAL SUB_NN_N(struct NATURAL A, struct NATURAL B)
 {
 	struct NATURAL first, second, res;
 	short int flag = 1;
 	int n, i;
 	//Находим большее/меньшее число
-	n = COM_NN_D(a, b);
+	n = COM_NN_D(A, B);
 	if (n == 0)
 	{
 		res.number = (int *)malloc(sizeof(int));
@@ -35,13 +35,13 @@ struct NATURAL SUB_NN_N(struct NATURAL a, struct NATURAL b)
 		res.number = NULL;
 		if (n == 2)
 		{
-			first = a;
-			second = b;
+			first = A;
+			second = B;
 		}
 		else
 		{
-			first = b;
-			second = a;
+			first = B;
+			second = A;
 		}
 
 

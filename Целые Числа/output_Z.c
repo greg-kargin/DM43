@@ -1,8 +1,8 @@
 #include "../build/main.h"
-int output_Z(struct INTEGER a)
+int output_Z(struct INTEGER A)
 {
-	if (a.sign)
+	if (A.sign)
 		printf("-");
-	output_N(a.natural_part);
+	output_N(A.natural_part);
 	return 0;
 }

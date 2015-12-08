@@ -12,4 +12,4 @@ int ABS_Z_N(struct INTEGER A)
 
 //ABS_Z_N(A.sign);
 
-//Где А - переменная структурного типа INTEGER;
+//Где А - переменная структурного типа struct INTEGER;

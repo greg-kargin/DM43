@@ -3,8 +3,8 @@
 MUL_ZZ_Z
 
 Описание переменных:
-a - первая дробь
-b - вторая дробь
+A - первая дробь
+B - вторая дробь
 с - новая дробь
 
 Описание значения возвращаемого функцией:
@@ -16,11 +16,11 @@ b - вторая дробь
 группа 4306
 */
 #include "../build/main.h"
-struct RATIONAL DIV_QQ_Q(struct RATIONAL a, struct RATIONAL b)
+struct RATIONAL DIV_QQ_Q(struct RATIONAL A, struct RATIONAL B)
 {
 	struct RATIONAL c;
-	c.numerator = MUL_NN_N(a.numerator, b.denominator);
-	c.denominator = MUL_NN_N(a.denominator, b.numerator);
-	c.sign = (a.sign == b.sign) ? 0 : 1;
+	c.numerator = MUL_NN_N(A.numerator, B.denominator);
+	c.denominator = MUL_NN_N(A.denominator, B.numerator);
+	c.sign = (A.sign == B.sign) ? 0 : 1;
 	return c;
 }

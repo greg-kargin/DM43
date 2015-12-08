@@ -3,8 +3,8 @@
 MUL_ZZ_Z
 
 Описание переменных:
-a - исходный многочлен
-b - рациональный коэффициент
+A - исходный многочлен
+B - рациональный коэффициент
 с - возвращаемый многочлен
 
 Описание значения возвращаемого функцией:
@@ -16,15 +16,15 @@ b - рациональный коэффициент
 группа 4306
 */
 #include "../build/main.h"
-struct POLYNOMIAL MUL_P_Q(struct POLYNOMIAL a, struct RATIONAL b)
+struct POLYNOMIAL MUL_P_Q(struct POLYNOMIAL A, struct RATIONAL B)
 {
 	struct POLYNOMIAL c;
-	c.factors = (int*)malloc(a.degree*sizeof(int));
-	for (int i = 0; i < a.degree; i++)
+	c.factors = (struct RATIONAL*)malloc(A.degree*sizeof(struct RATIONAL));
+	for (int i = 0; i < A.degree; i++)
 	{
-		c.factors[i].numerator = MUL_NN_N(a.factors[i].numerator, b.numerator);
-		c.factors[i].denominator = MUL_NN_N(a.factors[i].denominator, b.denominator);
-		c.factors[i].sign = (a.factors[i].sign == b.sign) ? 0 : 1;
+		c.factors[i].numerator = MUL_NN_N(A.factors[i].numerator, B.numerator);
+		c.factors[i].denominator = MUL_NN_N(A.factors[i].denominator, B.denominator);
+		c.factors[i].sign = (A.factors[i].sign == B.sign) ? 0 : 1;
 	}
 	return c;
 }

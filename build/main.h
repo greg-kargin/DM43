@@ -6,6 +6,7 @@
 #include "rational.h"
 #include "polynom.h"
 #include "inputs.h"
+
 /* Именованные константы */
 
 #define POSITIVE 0
@@ -17,11 +18,12 @@
 #define MENU_POLYNOMS 4
 #define MENU_EXIT 5
 
+#define COUNT_NUMBERS 3
 /* Типы данных */
 struct NATURAL
   {
   int *number; // указатель на массив цифр числа
-  int index;  //номер старшего разряда
+  int index;  //номер старшего разрядаA
   };
 
 struct INTEGER

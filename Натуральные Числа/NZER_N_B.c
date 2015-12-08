@@ -3,11 +3,11 @@
 //Возвращается (1), если число не равно "0", иначе возвращается (0)
 //Веретенников, Табаков - 4306
 #include "../build/main.h"
-int NZER_N_B(struct NATURAL num)
+int NZER_N_B(struct NATURAL A)
 {
 	int check = 0, i;  //Инициализация переменных
-	for (i = 0; i < num.index && !num.number[i]; i++) //Цикл идёт пока не достигнут конец или элемент равен нулю
-		if (num.number[i])
+	for (i = 0; i < A.index && !A.number[i]; i++) //Цикл идёт пока не достигнут конец или элемент равен нулю
+		if (A.number[i])
 			check = 1; //Если в числе есть цифра не равная нулю, устанавливаем флаг в значение 1
 	return check;
 }

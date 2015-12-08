@@ -1,16 +1,18 @@
 #ifndef INTEGER_H
 #define INTEGER_H
+#include "../build/main.h"
 
-int menuInteger();
+int menuItemInteger();
+int menuInteger(struct INTEGER* ints, struct NATURAL* nats);
 int ABS_Z_N(struct INTEGER A);
-struct INTEGER ADD_ZZ_Z(struct INTEGER summand1, struct INTEGER summand2);
-struct INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den);
-struct INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b);
-struct INTEGER MUL_ZZ_Z(struct INTEGER factor1, struct INTEGER factor2);
-int output_Z(struct INTEGER a);
-int POZ_Z_D(struct INTEGER number);
-struct INTEGER SUB_ZZ_Z(struct INTEGER summand1, struct INTEGER summand2);
+struct INTEGER ADD_ZZ_Z(struct INTEGER A, struct INTEGER B);
+struct INTEGER DIV_ZZ_Z(struct INTEGER A, struct NATURAL B);
+struct INTEGER MOD_ZZ_Z(struct INTEGER A, struct NATURAL B);
+struct INTEGER MUL_ZZ_Z(struct INTEGER A, struct INTEGER B);
+int output_Z(struct INTEGER A);
+int POZ_Z_D(struct INTEGER A);
+struct INTEGER SUB_ZZ_Z(struct INTEGER A, struct INTEGER B);
 struct INTEGER TRANS_N_Z(struct NATURAL A);
-struct NATURAL TRANS_Z_N(struct INTEGER inp_num);
+struct NATURAL TRANS_Z_N(struct INTEGER A);
 #endif // INTEGER_H
 

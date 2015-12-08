@@ -22,7 +22,7 @@ struct INTEGER SUB_ZZ_Z(struct INTEGER minuend, struct INTEGER subtrahend)  // r
       /* знаки одинаковы */
       {
       result.natural_part.index = 0;
-      result.natural_part.number = (int*)malloc( sizeof(int) );
+      result.natural_part.number = (int*)malloc(result.natural_part.index*sizeof(int) );
       result.natural_part.number[0] = 0;
       result.sign = 0;
       }

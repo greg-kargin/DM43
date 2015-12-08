@@ -1,7 +1,7 @@
 // Подгружаемые модули:
 //DIV_NN_N
 //SUB_NDN_N
-// Прототип NATURAL MOD_NN_N(NATURAL delimoe,NATURAL chastnoe),где
+// Прототип struct NATURAL MOD_NN_N(struct NATURAL delimoe,struct NATURAL chastnoe),где
 // 1-й параметр - //Делимое
 // 2-й параметр - Делитель
 // Находит остаток от деления двух натуральных чисел

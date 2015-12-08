@@ -8,52 +8,52 @@
 группа 4305
 */
 #include "../build/main.h"
-struct RATIONAL SUB_QQ_Q(struct RATIONAL number1, struct RATIONAL number2)
+struct RATIONAL SUB_QQ_Q(struct RATIONAL A, struct RATIONAL B)
   {
-  //Вычитание из number1 number2
+  //Вычитание из A B
 
   struct NATURAL NOK; //Наименьшее общее кратное
-  struct NATURAL factor1, factor2; //Множители
+  struct NATURAL C, D; //Множители
   struct RATIONAL result;
 
   //Выделение памяти
-  //result.numerator = calloc((((COM_NN_D(number1.numerator, number2.numerator)) ? number1.numerator : number2.numerator).index)*sizeof(int));
-  //result.denominator = calloc(sizeof(number1.denominator.index + number2.denominator.index)*sizeof(int));
+  //result.numerator = calloc((((COM_NN_D(A.numerator, B.numerator)) ? A.numerator : B.numerator).index)*sizeof(int));
+  //result.denominator = calloc(sizeof(A.denominator.index + B.denominator.index)*sizeof(int));
   result.sign = 0;
 
-  if (!(NZER_N_B(number1.denominator)) || !(NZER_N_B(number2.denominator)))
+  if (!(NZER_N_B(A.denominator)) || !(NZER_N_B(B.denominator)))
     puts("Ошибка! Отрицательный знаменатель на входе!");
 
   else
     {
-    NOK = LCM_NN_N(number1.denominator, number2.denominator);
+    NOK = LCM_NN_N(A.denominator, B.denominator);
 
-    factor1 = DIV_NN_N(NOK, number1.denominator);
-    factor2 = DIV_NN_N(NOK, number2.denominator);
+    C = DIV_NN_N(NOK, A.denominator);
+    D = DIV_NN_N(NOK, B.denominator);
 
-    number1.numerator = MUL_NN_N(factor1, number1.numerator);
-    number2.numerator = MUL_NN_N(factor2, number2.numerator);
+    A.numerator = MUL_NN_N(C, A.numerator);
+    B.numerator = MUL_NN_N(D, B.numerator);
 
-    if (number1.sign == number2.sign)
+    if (A.sign == B.sign)
       { // Если дроби одного знака
-      result.numerator = SUB_NN_N(number1.numerator, number2.numerator);
+      result.numerator = SUB_NN_N(A.numerator, B.numerator);
       result.denominator = NOK;
-      /*if (!COM_NN_D(number1.numerator, number2.numerator))
+      /*if (!COM_NN_D(A.numerator, B.numerator))
         { //Число1 > Число2
-        if (!number2.sign)//знак положителен
+        if (!B.sign)//знак положителен
           result.sign = 0;
         else //знак отрицателен
           result.sign = 1;
       else //Число2 > Число1
-      if (!number1.sign)//знак положителен
+      if (!A.sign)//знак положителен
         result.sign = 1;
       else //знак отрицателен
         result.sign = 0;
         }
       else //Если дроби разных знаков
-        result.numerator = ADD_QQ_Q(number1.numerator, number2.numerator);*/
+        result.numerator = ADD_QQ_Q(A.numerator, B.numerator);*/
       result.denominator = NOK;
-      if (number1.sign)
+      if (A.sign)
         result.sign = 0;
       else
         result.sign = 1;

@@ -2,39 +2,39 @@
 //  01.05.15.
 //  Сложение дробей
 #include "../build/main.h"
-struct RATIONAL ADD_QQ_Q(struct RATIONAL number1, struct RATIONAL number2)
+struct RATIONAL ADD_QQ_Q(struct RATIONAL A, struct RATIONAL B)
 {
   
   struct NATURAL NOK; //Наименьшее общее кратное
-  struct NATURAL factor1,factor2; //Множители
+  struct NATURAL C,D; //Множители
   struct RATIONAL sum;
   
   //Выделение памяти
-  //sum.numerator.number = calloc((((COM_NN_D(number1.numerator,number2.numerator))?number1.numerator:number2.numerator).index+1)*sizeof(int));
-  //sum.denominator.number = calloc(sizeof(number1.denominator.index+number2.denominator.index)*sizeof(int));
+  //sum.numerator.A = calloc((((COM_NN_D(A.numerator,B.numerator))?A.numerator:B.numerator).index+1)*sizeof(int));
+  //sum.denominator.A = calloc(sizeof(A.denominator.index+B.denominator.index)*sizeof(int));
   sum.sign = 0;
   
-  if(!(NZER_N_B(number1.denominator))||!(NZER_N_B(number2.denominator)))
+  if(!(NZER_N_B(A.denominator))||!(NZER_N_B(B.denominator)))
     puts("Ошибка! Отрицательный знаменатель на входе!");
     
   else{
-    NOK = LCM_NN_N(number1.denominator,number2.denominator);
+    NOK = LCM_NN_N(A.denominator,B.denominator);
     
-    factor1 = DIV_NN_N(NOK,number1.denominator);
-    factor2 = DIV_NN_N(NOK,number2.denominator);
+    C = DIV_NN_N(NOK,A.denominator);
+    D = DIV_NN_N(NOK,B.denominator);
     
-    number1.numerator = MUL_NN_N(factor1,number1.numerator);
-    number2.numerator = MUL_NN_N(factor2,number2.numerator);
+    A.numerator = MUL_NN_N(C,A.numerator);
+    B.numerator = MUL_NN_N(D,B.numerator);
     
-    if(number1.sign^number2.sign){ // Если дроби разных знаков
-      sum.numerator = SUB_NN_N(number1.numerator,number2.numerator);
-      sum.denominator = number1.denominator;
-      sum.sign = ((!COM_NN_D(number1.numerator,number2.numerator))?number1:number2).sign; //Выбираем знак суммы
+    if(A.sign^B.sign){ // Если дроби разных знаков
+      sum.numerator = SUB_NN_N(A.numerator,B.numerator);
+      sum.denominator = A.denominator;
+      sum.sign = ((!COM_NN_D(A.numerator,B.numerator))?A:B).sign; //Выбираем знак суммы
     }                                                                                    //как знак большего числа
     else //Если дроби одного знака
-      sum.numerator = ADD_NN_N(number1.numerator,number2.numerator);
-      sum.denominator = number1.denominator;
-      sum.sign = number1.sign;
+      sum.numerator = ADD_NN_N(A.numerator,B.numerator);
+      sum.denominator = A.denominator;
+      sum.sign = A.sign;
   }
   return sum;
 }

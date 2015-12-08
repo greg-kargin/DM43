@@ -1,11 +1,11 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include "main.h"
 
 struct NATURAL ENNAT()
 {
 	struct NATURAL input, reverse;
 	/*input.index = 0;
-	input.number = NULL;
+	input.A = NULL;
 	char ch;
 	ch = '\0';
 	do
@@ -15,32 +15,32 @@ struct NATURAL ENNAT()
 	  scanf_s("%c", &ch);
 	  if (ch == '0' && input.index == 0)
 		{
-		printf("Число не может начинаться с 0!\nПовторите ввод:");
+		printf("Р§РёСЃР»Рѕ РЅРµ РјРѕР¶РµС‚ РЅР°С‡РёРЅР°С‚СЊСЃСЏ СЃ 0!\nРџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:");
 		fflush(stdin);
 		}
 	  else
 	  if (ch>47 && ch<58)
 		{
 		++input.index;
-		input.number = (int*) realloc(input.number, input.index*sizeof(int));
-		input.number[input.index - 1] = ch-48;
+		input.A = (int*) realloc(input.A, input.index*sizeof(int));
+		input.A[input.index - 1] = ch-48;
 		}
 	  else
 	  if (ch != '\n')
 		{
-		printf("В строку попали посторонние символы!\nПовторите ввод:");
-		free(input.number);
-		input.number = NULL;
+		printf("Р’ СЃС‚СЂРѕРєСѓ РїРѕРїР°Р»Рё РїРѕСЃС‚РѕСЂРѕРЅРЅРёРµ СЃРёРјРІРѕР»С‹!\nРџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:");
+		free(input.A);
+		input.A = NULL;
 		input.index = 0;
 		fflush(stdin);
 		}
 	  }
 	  while (ch != '\n');*/
 	  /*
-	  printf("Введите количество цифр в числе от 1 до 30");
+	  printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІ С‡РёСЃР»Рµ РѕС‚ 1 РґРѕ 30");
 	  input.index=enterIntNum(1,30);
 	  for(int i=0; i<input.index; ++i)
-		input.number[i]=getchar()-48;
+		input.A[i]=getchar()-48;
 	  */
 	input.index = 5;
 	input.number = (int*)malloc(input.index*sizeof(int));
@@ -56,7 +56,7 @@ struct NATURAL ENNAT()
 struct INTEGER ENINT()
 {
 	struct INTEGER input;
-	printf("Введите знак числа 0 знак '+', 1 знак '-': ");
+	printf("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє С‡РёСЃР»Р° 0 Р·РЅР°Рє '+', 1 Р·РЅР°Рє '-': ");
 	input.sign = enterIntNumInterval(0, 1);
 	input.natural_part = ENNAT();
 	return input;
@@ -65,7 +65,7 @@ struct INTEGER ENINT()
 struct RATIONAL ENRAT()
 {
 	struct RATIONAL input;
-	printf("Введите знак числа 0 знак '+', 1 знак '-': ");
+	printf("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє С‡РёСЃР»Р° 0 Р·РЅР°Рє '+', 1 Р·РЅР°Рє '-': ");
 	input.sign = enterIntNumInterval(0, 1);
 	input.numerator = ENNAT();
 	input.denominator = ENNAT();
@@ -89,7 +89,7 @@ char enterCharInterval(char first, char last, char* str)
 		printf("%s", str);
 		scanf_s("%c", &ch);
 		if (ch < first || ch > last)
-			printf("Неверный ввод!\n");
+			printf("РќРµРІРµСЂРЅС‹Р№ РІРІРѕРґ!\n");
 	} while (ch < first || ch > last);
 	return ch;
 }
@@ -118,10 +118,10 @@ int enterIntNumInterval(int first, int last)
 			num = atoi(str);
 		else
 		{
-			printf("В строку попало что-то кроме числа, повторите ввод:\n");
+			printf("Р’ СЃС‚СЂРѕРєСѓ РїРѕРїР°Р»Рѕ С‡С‚Рѕ-С‚Рѕ РєСЂРѕРјРµ С‡РёСЃР»Р°, РїРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n");
 		}
 		if ((num < first || num > last) && check_all)
-			printf("Скорее всего вы ошиблись при вводе\nВведите число от %d до %d\nПовторите ввод: ", first, last);
+			printf("РЎРєРѕСЂРµРµ РІСЃРµРіРѕ РІС‹ РѕС€РёР±Р»РёСЃСЊ РїСЂРё РІРІРѕРґРµ\nР’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РѕС‚ %d РґРѕ %d\nРџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ", first, last);
 	} while (num < first || num > last || !check_all);
 	return num;
 }

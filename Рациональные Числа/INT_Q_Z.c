@@ -1,12 +1,12 @@
 //Подключаемые модули отсутствуют
-//int INT_Q_Z(struct RATIONAL a), где a - проверяемое число
+//int INT_Q_Z(struct RATIONAL A), где A - проверяемое число
 //Функция возвращает 1, если проверяемое число целое, иначе 0
 //Филькина - Никифоров -4305
 #include "../build/main.h"
  
-int INT_Q_Z(struct RATIONAL a)
+int INT_Q_Z(struct RATIONAL A)
 {
-	if (a.denominator.number)
-		return (a.denominator.index == 1 && a.denominator.number[0] == 1)? 1 : 0;
+	if (A.denominator.number)
+		return (A.denominator.index == 1 && A.denominator.number[0] == 1)? 1 : 0;
 	return 1;
 }

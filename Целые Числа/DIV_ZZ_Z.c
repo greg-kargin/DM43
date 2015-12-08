@@ -5,7 +5,7 @@
 	DIV_NN_N
 Описание переменных:
 	num - Первое число
-	den - Второе число
+	B - Второе число
 	buff - Вспомогательная переменная
 	result - Результат деления
 
@@ -14,16 +14,16 @@
 4306
 */
 #include "../build/main.h"
-struct INTEGER DIV_ZZ_Z(struct INTEGER num, struct NATURAL den)
+struct INTEGER DIV_ZZ_Z(struct INTEGER A, struct NATURAL B)
 {
 	struct INTEGER result;
 	int i;
-	result.natural_part.index = num.natural_part.index;
+	result.natural_part.index = A.natural_part.index;
 	result.natural_part.number = (int*)malloc(result.natural_part.index*sizeof(int));
 	for (i = 0; i < result.natural_part.index; ++i)
-		result.natural_part.number[i] = num.natural_part.number[i];
-	result.natural_part = DIV_NN_N(result.natural_part, den);
+		result.natural_part.number[i] = A.natural_part.number[i];
+	result.natural_part = DIV_NN_N(result.natural_part, B);
 	result.natural_part.index = result.natural_part.index;
-	result.sign = num.sign;
+	result.sign = A.sign;
 	return result;
 }

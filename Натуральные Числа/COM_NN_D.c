@@ -3,14 +3,14 @@
 Выполнили: Вовк К.В. Эмомов Г.С. (4305)
 */
 #include "../build/main.h"
-int COM_NN_D(struct NATURAL one, struct NATURAL two)
+int COM_NN_D(struct NATURAL A, struct NATURAL B)
 {
-    if(one.index > two.index) return 2;
-    if(two.index > one.index) return 1;
-    for(int i = one.index-1;i >= 0;i--)
+    if(A.index > B.index) return 2;
+    if(B.index > A.index) return 1;
+    for(int i = A.index-1;i >= 0;i--)
     {
-        if(one.number[i] > two.number[i]) return 2;
-        if(two.number[i] > one.number[i]) return 1;
+        if(A.number[i] > B.number[i]) return 2;
+        if(B.number[i] > A.number[i]) return 1;
     }
     return 0;
 }

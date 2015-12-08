@@ -8,8 +8,8 @@ MULL_ZZ_Z
 SUB_Z_Z
 	
 Описание переменных:
-	a - Делимое
-	b - Делитель
+	A - Делимое
+	B - Делитель
 	c, d - Вспомогательные переменные
 	result - Остаток от деления
 Бурыкин Емельян
@@ -17,11 +17,11 @@ SUB_Z_Z
 4306
 */
 #include "../build/main.h"
-struct INTEGER MOD_ZZ_Z(struct INTEGER a, struct NATURAL b)
+struct INTEGER MOD_ZZ_Z(struct INTEGER A, struct NATURAL B)
 {
-  struct INTEGER c, d;
-  c=DIV_ZZ_Z(a, b);
-  d=TRANS_N_Z(b);
-  c=MUL_ZZ_Z(c, d);
-  return SUB_ZZ_Z(a, c);
+  struct INTEGER C, D;
+  C=DIV_ZZ_Z(A, B);
+  D=TRANS_N_Z(B);
+  C=MUL_ZZ_Z(C, D);
+  return SUB_ZZ_Z(A, C);
 }

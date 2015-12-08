@@ -14,8 +14,8 @@
 */
 #include "../build/main.h"
 
-struct NATURAL LCM_NN_N(struct NATURAL a, struct NATURAL b)
+struct NATURAL LCM_NN_N(struct NATURAL A, struct NATURAL B)
 {
-	return MUL_NN_N( DIV_NN_N( a, GCF_NN_N(a, b) ), b);
-	//НОК находится по формуле: a*b/НОД(a,b)
+	return MUL_NN_N( DIV_NN_N( A, GCF_NN_N(A, B) ), B);
+	//НОК находится по формуле: A*B/НОД(A,B)
 }
