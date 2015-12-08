@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 		printf("4. %s\n", "Действия с многочленами");
 		printf("5. %s\n", "Выход из программы");
 
-		_uint16 menu_item = enterIntNumInterval(1, 5);
+		_uint16 menu_item = 1;//enterIntNumInterval(1, 5);
 
 		system("cls");
 		int item = -1;

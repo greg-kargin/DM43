@@ -7,7 +7,7 @@ int COM_NN_D(struct NATURAL A, struct NATURAL B)
 {
     if(A.index > B.index) return 2;
     if(B.index > A.index) return 1;
-    for(int i = A.index-1;i >= 0;i--)
+    for(int i = 0; i < A.index; --i)
     {
         if(A.number[i] > B.number[i]) return 2;
         if(B.number[i] > A.number[i]) return 1;

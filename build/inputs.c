@@ -4,52 +4,47 @@
 struct NATURAL ENNAT()
 {
 	struct NATURAL input, reverse;
-	/*input.index = 0;
-	input.A = NULL;
+	input.index = 0;
+	input.number = NULL;
+	int i = 0, b=1;
 	char ch;
 	ch = '\0';
+	getchar();
 	do
-	  {
-	  //ch = getchar();
-	  fflush(stdin);
-	  scanf_s("%c", &ch);
-	  if (ch == '0' && input.index == 0)
+	{
+		ch = getchar();
+		if (ch == '\n' && input.index)
+			b = 0;
+		if (ch == '0' && input.index == 0 && b)
 		{
-		printf("Число не может начинаться с 0!\nПовторите ввод:");
-		fflush(stdin);
+			//printf("Число не может начинаться с 0!\nПовторите ввод:"); //пока не работает
+			fflush(stdin);
 		}
-	  else
-	  if (ch>47 && ch<58)
-		{
-		++input.index;
-		input.A = (int*) realloc(input.A, input.index*sizeof(int));
-		input.A[input.index - 1] = ch-48;
-		}
-	  else
-	  if (ch != '\n')
-		{
-		printf("В строку попали посторонние символы!\nПовторите ввод:");
-		free(input.A);
-		input.A = NULL;
-		input.index = 0;
-		fflush(stdin);
-		}
-	  }
-	  while (ch != '\n');*/
-	  /*
-	  printf("Введите количество цифр в числе от 1 до 30");
-	  input.index=enterIntNum(1,30);
-	  for(int i=0; i<input.index; ++i)
-		input.A[i]=getchar()-48;
-	  */
-	input.index = 5;
+		else
+			if (ch > 47 && ch < 58)
+			{
+				++input.index;
+				input.number = (int*)realloc(input.number, input.index*sizeof(int));
+				input.number[input.index - 1] = ch - 48;
+			}
+			else
+				if (ch != '\n')
+				{
+					printf("В строку попали посторонние символы!\nПовторите ввод:");
+					free(input.number);
+					input.number = NULL;
+					input.index = 0;
+					fflush(stdin);
+				}
+	} while (b);
+	/*input.index = 5;
 	input.number = (int*)malloc(input.index*sizeof(int));
-	for (int i = 0; i<input.index; ++i)
-		input.number[i] = i+1;
+	for (int i = 0; i < input.index; ++i)
+		input.number[i] = i + 1;*/
 	reverse.index = input.index;
 	reverse.number = (int*)malloc(reverse.index*sizeof(int));
 	for (int i = 0; i < reverse.index; ++i)
-		reverse.number[i] = input.number[input.index-1-i];
+		reverse.number[i] = input.number[input.index - 1 - i];
 	return reverse;
 }
 
@@ -83,13 +78,17 @@ struct POLYNOMIAL ENPOL()
 }
 char enterCharInterval(char first, char last, char* str)
 {
-	char ch;
+	char ch = 0;
+	ch = getchar();
 	do
 	{
 		printf("%s", str);
-		scanf_s("%c", &ch);
+		ch = getchar();
 		if (ch < first || ch > last)
+		{
 			printf("Неверный ввод!\n");
+			fflush(stdin);
+		}
 	} while (ch < first || ch > last);
 	return ch;
 }
@@ -107,8 +106,8 @@ int enterIntNumInterval(int first, int last)
 		fflush(stdin);
 		for (int i = 0; str[i] != '\0' && check_all; ++i)
 		{
-			if (str[i]>(int)'0' - 1 && str[i]<(int)'9' + 1)
-					check_num = 1;
+			if (str[i] > (int)'0' - 1 && str[i] < (int)'9' + 1)
+				check_num = 1;
 			if (check_num)
 				check_num = 0;
 			else

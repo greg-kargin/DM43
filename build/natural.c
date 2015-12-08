@@ -21,6 +21,7 @@ int menuItemNatural()
 	  printf("15. %s\n", "НОД двух чисел");
 	  printf("16. %s\n", "НОК двух чисел");
 	  printf("17. %s\n", "Возврат в меню");
+
 	  return enterIntNumInterval(1,17);
   }
 
@@ -28,25 +29,28 @@ int menuNatural(struct NATURAL* nats)
 {
 	int tMin = 0, tMax = 150;
 	int item;
-	char ch;
+	char ch, ch1;
 	for (short int i = 0; i < COUNT_NUMBERS; ++i)
 		nats[i].index = 0;
+	//nats[0] = ENNAT();
+	//nats[1] = ENNAT();
 	do
 	{
-		switch (item = menuItemNatural())
+		item = menuItemNatural();
+		system("cls");
+		switch (item)
 		{
 		case 1:
-			printf("Введите натуральное число A (>0):");
-			nats[0] = ENNAT();
-			printf("Введите натуральное число B (>0):");
-			nats[1] = ENNAT();
+			ch = enterCharInterval('A', 'B', "Выберите число для ввода (A, B): ");
+			printf("Введите число %c>0:", ch);
+			nats[ch-65] = ENNAT();
 			break;
 
 		case 2:
 			for (short int i = 0; i < COUNT_NUMBERS; ++i)
 				if (nats[i].index>0)
 				{
-					printf("Число %c:", (65+i));
+					printf("Число %c:", (65 + i));
 					output_N(nats[i]);
 					printf("\n");
 				}
@@ -55,19 +59,25 @@ int menuNatural(struct NATURAL* nats)
 			break;
 
 		case 3:
-			if (COM_NN_D(nats[0], nats[1]) == 2)
-				printf("Число A больше числа B(A>B)");
-			else
-				if (COM_NN_D(nats[0], nats[1]) == 1)
-					printf("Число B больше числа A(B>A)");
-				else
-					printf("Число A равно числу B (A=B)");
-			printf("\n");
+			ch = enterCharInterval('A', 'C', "Выберите первое сравнимое число (A, B или C): ");
+			ch1 = enterCharInterval('A', 'C', "Выберите второе сравнимое число (A, B или C): ");
+			switch (COM_NN_D(nats[ch-65], nats[ch1-65]))
+			{
+				case 0:
+					printf("%c=%c", ch, ch1);
+					break;
+				case 1:
+					printf("%c>%c", ch, ch1);
+					break;
+				case 2:
+					printf("%c<%c", ch, ch1);
+					break;
+			}
 			break;
 
 		case 4:
 			ch = enterCharInterval('A', 'C', "Выберите проверяемое число (A, B или C): ");
-			printf("Число %c %sравно нулю", ch, (NZER_N_B(nats[ch-65])) ? "" : "не ");
+			printf("Число %c %s равно нулю\n", ch, (NZER_N_B(nats[ch-65])) ? "" : "не");
 			break;
 
 		case 5:
@@ -124,8 +134,6 @@ int menuNatural(struct NATURAL* nats)
 			nats[2] = LCM_NN_N(nats[0], nats[1]);
 			break;
 		}
-		system("pause");
-		system("cls");
 		printf("Операция успешно завершена!\n");
 		system("pause");
 	} while (item != 17);
